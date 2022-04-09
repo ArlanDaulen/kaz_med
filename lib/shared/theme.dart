@@ -16,14 +16,27 @@ class AppColors {
   static const Color inactiveColor = Color(0xffafb2b5);
   static const Color whiteColor = Colors.white;
   static const Color greyColor = Color(0xff9298A9);
+  static const Color defaultBackgroundColor = Color(0xffFAFBFD);
+  static Color shadowColor = const Color(0xff8A959E).withOpacity(0.12);
 }
 
 class AppSvgImages {
   static const String heart_rate = 'assets/images/svg/heart_rate.svg';
   static const String lock = 'assets/images/svg/lock.svg';
   static const String person = 'assets/images/svg/person.svg';
+  static const String cardiologist = 'assets/images/svg/cardiologist.svg';
+  static const String dentist = 'assets/images/svg/dentist.svg';
+  static const String optician = 'assets/images/svg/optician.svg';
+  static const String orthopedic = 'assets/images/svg/orthopedic.svg';
+  static const String heart = 'assets/images/svg/heart.svg';
+  static const String search = 'assets/images/svg/search.svg';
+  static const String message = 'assets/images/svg/message.svg';
 }
 
 class AppPngImages {
   static const String auth_page_image = 'assets/images/png/auth_page_image.png';
+  static const String doctor_1 = 'assets/images/png/doctor_1.png';
+  static const String doctor_2 = 'assets/images/png/doctor_2.png';
+  static const String doctor_3 = 'assets/images/png/doctor_3.png';
+  static const String doctor_4 = 'assets/images/png/doctor_4.png';
 }
