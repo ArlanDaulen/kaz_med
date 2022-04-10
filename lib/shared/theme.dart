@@ -21,7 +21,7 @@ class AppColors {
 }
 
 class AppSvgImages {
-  static const String heart_rate = 'assets/images/svg/heart_rate.svg';
+  static const String heartRate = 'assets/images/svg/heart_rate.svg';
   static const String lock = 'assets/images/svg/lock.svg';
   static const String person = 'assets/images/svg/person.svg';
   static const String cardiologist = 'assets/images/svg/cardiologist.svg';
@@ -31,6 +31,7 @@ class AppSvgImages {
   static const String heart = 'assets/images/svg/heart.svg';
   static const String search = 'assets/images/svg/search.svg';
   static const String message = 'assets/images/svg/message.svg';
+  static const String successMessage = 'assets/images/svg/telegram_success.svg';
 }
 
 class AppPngImages {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/home/provider/doctors_profile_provider.dart';
+import 'package:kaz_med/pages/home/ui/message_page.dart';
 import 'package:kaz_med/pages/home/ui/widgets/doctors_container.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
@@ -64,7 +65,7 @@ class DoctorsProfilePage extends StatelessWidget {
               ],
             ),
           ),
-          bottomSheet: _bottomSheet(),
+          bottomSheet: _bottomSheet(context),
           body: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(25),
@@ -130,7 +131,7 @@ class DoctorsProfilePage extends StatelessWidget {
     );
   }
 
-  _bottomSheet() {
+  _bottomSheet(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(25),
@@ -140,18 +141,26 @@ class DoctorsProfilePage extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                color: AppColors.defaultBackgroundColor,
+              GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const MessagePage(),
+                  ),
+                ),
                 child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(14),
-                    vertical: getProportionateScreenHeight(14),
+                  color: AppColors.defaultBackgroundColor,
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(14),
+                      vertical: getProportionateScreenHeight(14),
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.primaryColor.withOpacity(0.12),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: SvgPicture.asset(AppSvgImages.message),
                   ),
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor.withOpacity(0.12),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: SvgPicture.asset(AppSvgImages.message),
                 ),
               ),
               SizedBox(

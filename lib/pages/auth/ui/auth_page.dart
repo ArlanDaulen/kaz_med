@@ -45,7 +45,7 @@ class AuthPage extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SvgPicture.asset(AppSvgImages.heart_rate),
+                      SvgPicture.asset(AppSvgImages.heartRate),
                       DefaultText(
                         text: 'KazMed',
                         fontWeight: FontWeight.w700,
