@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kaz_med/base/base_provider.dart';
+import 'package:kaz_med/pages/booking/ui/booking_page.dart';
 import 'package:kaz_med/pages/home/provider/doctors_profile_provider.dart';
 import 'package:kaz_med/pages/home/ui/message_page.dart';
 import 'package:kaz_med/pages/home/ui/widgets/doctors_container.dart';
@@ -170,7 +171,12 @@ class DoctorsProfilePage extends StatelessWidget {
                 child: DefaultButton(
                   text: 'Book appointment',
                   textColor: AppColors.whiteColor,
-                  press: () {},
+                  press: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => BookingPage(),
+                    ),
+                  ),
                 ),
               ),
             ],

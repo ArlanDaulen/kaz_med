@@ -10,12 +10,14 @@ class DefaultButton extends StatelessWidget {
       this.press,
       this.color = AppColors.primaryColor,
       this.textColor = AppColors.whiteColor,
-      this.width = double.maxFinite});
+      this.width = double.maxFinite,
+      this.isButtonEnabled = true});
   final String? text;
   final Function? press;
   final Color color;
   final Color textColor;
   final double width;
+  final bool isButtonEnabled;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,8 @@ class DefaultButton extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(4),
           ),
-          primary: color,
+          shadowColor: AppColors.primaryColor.withOpacity(0),
+          primary: isButtonEnabled ? color : color.withOpacity(0.5),
         ),
         onPressed: press as void Function()?,
         child: DefaultText(
