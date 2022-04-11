@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../main/navigator_state.dart';
-import '../../../main/user_data.dart';
+import '../../../app/main/navigator_state.dart';
+import '../../../app/main/user_data.dart';
 import '../../../shared/utils.dart';
 import '../../freezed/network_error.dart';
 import '../../freezed/result.dart';
@@ -70,12 +70,12 @@ class NetworkExecuter {
           context: GlobalVariable.navState.currentContext!,
           barrierDismissible: true,
           backgroundColor: Colors.black26,
-          title: 'Ошибка',
+          title: 'Error',
           child: Container(
             padding: EdgeInsets.all(20),
             child: Center(
               child: Text(
-                "Что то пошло не так c нашими серверами, свяжитесь с администратором чтобы проблема решилась быстрее!",
+                "Something went wrong!",
                 textAlign: TextAlign.center,
               ),
             ),

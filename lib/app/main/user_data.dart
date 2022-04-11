@@ -1,6 +1,3 @@
-import 'dart:developer';
-import 'package:flutter/material.dart';
-import 'package:kaz_med/data/models/customer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserData {

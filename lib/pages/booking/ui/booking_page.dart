@@ -104,6 +104,7 @@ class BookingPage extends StatelessWidget {
                 SizedBox(
                   height: getProportionateScreenHeight(60),
                   child: SfDateRangePicker(
+                    navigationMode: DateRangePickerNavigationMode.none,
                     controller: model.dateRangePickerController,
                     allowViewNavigation: false,
                     showNavigationArrow: true,

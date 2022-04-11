@@ -1,8 +1,8 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 
-import '../base/base_provider.dart';
-import '../shared/theme.dart';
+import '../../base/base_provider.dart';
+import '../../shared/theme.dart';
 import 'app_model.dart';
 import 'navigator_state.dart';
 import 'no_internet_screen.dart';

@@ -115,7 +115,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     DefaultButton(
                       text: 'Login',
-                      press: () {},
+                      press: () => model.verificate(context),
                     ),
                     SizedBox(
                       height: getProportionateScreenHeight(26),

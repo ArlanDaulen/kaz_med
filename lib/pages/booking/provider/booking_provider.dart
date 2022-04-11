@@ -65,6 +65,7 @@ class BookingPageProvider extends BaseBloc {
 
   nextWeek() {
     dateRangePickerController.forward!();
+    month = _switchNumberToMonth(dateRangePickerController.displayDate!.month);
     log(dateRangePickerController.displayDate!.month.toString());
     notifyListeners();
   }
@@ -72,7 +73,6 @@ class BookingPageProvider extends BaseBloc {
   prevWeek() {
     dateRangePickerController.backward!();
     month = _switchNumberToMonth(dateRangePickerController.displayDate!.month);
-
     notifyListeners();
   }
 

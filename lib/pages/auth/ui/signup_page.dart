@@ -203,7 +203,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     DefaultButton(
                       text: 'Create account',
-                      press: () {},
+                      press: () => model.register(context),
                     ),
                     const Spacer(
                       flex: 3,

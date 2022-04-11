@@ -129,11 +129,12 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: getProportionateScreenHeight(17),
-                ),
                 Expanded(
                   child: ListView.separated(
+                    padding: EdgeInsets.only(
+                      top: getProportionateScreenHeight(17),
+                      bottom: getProportionateScreenHeight(17),
+                    ),
                     shrinkWrap: true,
                     physics: const BouncingScrollPhysics(),
                     itemCount: doctors.length,

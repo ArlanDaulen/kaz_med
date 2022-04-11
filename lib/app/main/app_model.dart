@@ -6,9 +6,10 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/pages/auth/ui/auth_page.dart';
 import 'package:kaz_med/pages/auth/ui/login_page.dart';
+import 'package:kaz_med/pages/auth/ui/signup_page.dart';
 import 'package:kaz_med/pages/home/ui/home_page.dart';
 
-import '../base/base_bloc.dart';
+import '../../base/base_bloc.dart';
 import 'user_data.dart';
 
 class MyAppModel extends BaseBloc {
@@ -50,6 +51,10 @@ class MyAppModel extends BaseBloc {
   }
 
   Widget getHomeScreen() {
-    return HomePage();
+    if (isAuthenticated) {
+      return HomePage();
+    } else {
+      return const LoginPage();
+    }
   }
 }
