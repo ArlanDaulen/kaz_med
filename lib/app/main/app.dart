@@ -35,12 +35,10 @@ class MyApp extends StatelessWidget {
                 // backgroundColor: Colors.white,
                 fontFamily: 'Manrope',
               ),
-              home: SafeArea(
-                child: snapshot.data == ConnectivityResult.none ||
-                        snapshot.data == null
-                    ? const NoInternetScreen()
-                    : model.getHomeScreen(),
-              ),
+              home: snapshot.data == ConnectivityResult.none ||
+                      snapshot.data == null
+                  ? const NoInternetScreen()
+                  : model.getHomeScreen(),
             );
           },
         );

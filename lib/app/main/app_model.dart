@@ -8,6 +8,7 @@ import 'package:kaz_med/pages/auth/ui/auth_page.dart';
 import 'package:kaz_med/pages/auth/ui/login_page.dart';
 import 'package:kaz_med/pages/auth/ui/signup_page.dart';
 import 'package:kaz_med/pages/home/ui/home_page.dart';
+import 'package:kaz_med/pages/index/ui/index.dart';
 
 import '../../base/base_bloc.dart';
 import 'user_data.dart';
@@ -51,10 +52,10 @@ class MyAppModel extends BaseBloc {
   }
 
   Widget getHomeScreen() {
-    if (isAuthenticated) {
-      return HomePage();
-    } else {
-      return const AuthPage();
-    }
+    // if (isAuthenticated) {
+    return const IndexPage();
+    // } else {
+    //   return const AuthPage();
+    // }
   }
 }

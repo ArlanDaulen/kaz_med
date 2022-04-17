@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
             ),
             child: AppBar(
               title: DefaultText(
-                text: 'Consultation',
+                text: 'Doctors',
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
               ),

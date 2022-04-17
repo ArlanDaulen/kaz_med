@@ -22,6 +22,20 @@ class AppColors {
 }
 
 class AppSvgImages {
+  // Nav Bar
+  static const String home_ic = 'assets/images/svg/home_ic.svg';
+  // static const String home_ic = 'assets/images/svg/home_ic.svg';
+  static const String search_active_ic =
+      'assets/images/svg/search_active_ic.svg';
+  static const String chat_ic = 'assets/images/svg/chat_ic.svg';
+  static const String profile_ic = 'assets/images/svg/profile_ic.svg';
+
+  // Clinics Page
+  static const String clinic_1 = 'assets/images/svg/clinic_1.svg';
+  static const String clinic_2 = 'assets/images/svg/clinic_2.svg';
+  static const String clinic_3 = 'assets/images/svg/clinic_3.svg';
+  static const String clinic_4 = 'assets/images/svg/clinic_4.svg';
+
   static const String heartRate = 'assets/images/svg/heart_rate.svg';
   static const String lock = 'assets/images/svg/lock.svg';
   static const String person = 'assets/images/svg/person.svg';
@@ -33,6 +47,7 @@ class AppSvgImages {
   static const String search = 'assets/images/svg/search.svg';
   static const String message = 'assets/images/svg/message.svg';
   static const String successMessage = 'assets/images/svg/telegram_success.svg';
+  static const String filter_ic = 'assets/images/svg/filter_ic.svg';
 }
 
 class AppPngImages {
@@ -41,4 +56,10 @@ class AppPngImages {
   static const String doctor_2 = 'assets/images/png/doctor_2.png';
   static const String doctor_3 = 'assets/images/png/doctor_3.png';
   static const String doctor_4 = 'assets/images/png/doctor_4.png';
+
+  static const String clinic_1 = 'assets/images/png/clinic_1.png';
+  static const String clinic_2 = 'assets/images/png/clinic_2.png';
+  static const String clinic_3 = 'assets/images/png/clinic_3.png';
+  static const String clinic_4 = 'assets/images/png/clinic_4.png';
+  static const String filter_ic_png = 'assets/images/png/filter_ic.png';
 }
