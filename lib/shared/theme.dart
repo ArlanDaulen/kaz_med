@@ -33,6 +33,7 @@ class AppSvgImages {
   static const String search = 'assets/images/svg/search.svg';
   static const String message = 'assets/images/svg/message.svg';
   static const String successMessage = 'assets/images/svg/telegram_success.svg';
+  static const String filter = 'assets/images/svg/filter.svg';
 }
 
 class AppPngImages {

@@ -4,6 +4,7 @@ import 'package:kaz_med/shared/size_config.dart';
 
 class HomeProvider extends BaseBloc {
   List<bool> sectionsToggles = List.generate(4, (index) => true);
+  TextEditingController searchController = TextEditingController();
 
   init(BuildContext context) {
     setLoading(true);

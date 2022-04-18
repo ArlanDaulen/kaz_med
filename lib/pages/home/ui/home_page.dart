@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/home/provider/home_provider.dart';
 import 'package:kaz_med/pages/home/ui/doctors_profile_page.dart';
+import 'package:kaz_med/pages/home/ui/filters_page.dart';
 import 'package:kaz_med/pages/home/ui/widgets/doctors_container.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
@@ -41,25 +44,90 @@ class HomePage extends StatelessWidget {
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(
-              getProportionateScreenHeight(70),
+              getProportionateScreenHeight(120),
             ),
             child: AppBar(
               title: DefaultText(
-                text: 'Consultation',
+                text: 'Doctors',
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
               ),
               centerTitle: true,
               backgroundColor: AppColors.defaultBackgroundColor,
               elevation: 0,
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(
-                    AppSvgImages.search,
+              bottom: PreferredSize(
+                preferredSize: Size.fromHeight(
+                  getProportionateScreenHeight(70),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(10),
+                  ),
+                  child: ListTile(
+                    title: TextFormField(
+                      controller: model.searchController,
+                      cursorColor: AppColors.systemBlackColor,
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: AppColors.systemBlackColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: getProportionateScreenHeight(14),
+                        ),
+                      ),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 0,
+                          horizontal: getProportionateScreenWidth(10),
+                        ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColors.greyColor,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: AppColors.greyColor,
+                          ),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        hintText: 'Cardiologist',
+                        hintStyle: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: getProportionateScreenHeight(14),
+                          ),
+                        ),
+                        suffixIcon: const Icon(
+                          CupertinoIcons.search,
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
+                    ),
+                    trailing: GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => FiltersPage(),
+                        ),
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(6),
+                          vertical: getProportionateScreenHeight(6),
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: SvgPicture.asset(
+                          AppSvgImages.filter,
+                          color: AppColors.whiteColor,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ],
+              ),
             ),
           ),
           body: Padding(
@@ -68,6 +136,9 @@ class HomePage extends StatelessWidget {
             ),
             child: Column(
               children: [
+                SizedBox(
+                  height: getProportionateScreenHeight(10),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(
