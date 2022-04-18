@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_bloc.dart';
-import 'package:kaz_med/pages/clinics/ui/filters_of_clinics.dart';
+import 'package:kaz_med/pages/clinics/ui/clinics_filter_page.dart';
 import 'package:kaz_med/shared/theme.dart';
 
 class ClinicsProvider extends BaseBloc {
   TextEditingController searchController = TextEditingController();
   Size? size;
+  List<bool> sectionsToggles = List.generate(4, (index) => true);
+
 
   init(context) {
     setLoading(true);
@@ -14,8 +16,17 @@ class ClinicsProvider extends BaseBloc {
   }
 
   toFilters(context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => const FiltersOfClinics()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ClinicsFilters(),
+      ),
+    );
+  }
+
+  toggleSections(int index) {
+    sectionsToggles[index] = !sectionsToggles[index];
+    notifyListeners();
   }
 
   // List<String> clinics = [
@@ -24,6 +35,7 @@ class ClinicsProvider extends BaseBloc {
   //   AppSvgImages.clinic_3,
   //   AppSvgImages.clinic_4,
   // ];
+
 
   List<String> clinics = [
     AppPngImages.clinic_1,

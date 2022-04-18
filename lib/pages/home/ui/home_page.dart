@@ -41,87 +41,90 @@ class HomePage extends StatelessWidget {
       onReady: (p0) => p0.init(context),
       model: HomeProvider(),
       builder: (context, model, child) {
-        return Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(
-              getProportionateScreenHeight(120),
-            ),
-            child: AppBar(
-              title: DefaultText(
-                text: 'Doctors',
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(
+                getProportionateScreenHeight(120),
               ),
-              centerTitle: true,
-              backgroundColor: AppColors.defaultBackgroundColor,
-              elevation: 0,
-              bottom: PreferredSize(
-                preferredSize: Size.fromHeight(
-                  getProportionateScreenHeight(70),
+              child: AppBar(
+                title: DefaultText(
+                  text: 'Doctors',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
                 ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(10),
+                centerTitle: true,
+                backgroundColor: AppColors.defaultBackgroundColor,
+                elevation: 0,
+                bottom: PreferredSize(
+                  preferredSize: Size.fromHeight(
+                    getProportionateScreenHeight(70),
                   ),
-                  child: ListTile(
-                    title: TextFormField(
-                      controller: model.searchController,
-                      cursorColor: AppColors.systemBlackColor,
-                      style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                          color: AppColors.systemBlackColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: getProportionateScreenHeight(14),
-                        ),
-                      ),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(
-                          vertical: 0,
-                          horizontal: getProportionateScreenWidth(10),
-                        ),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: AppColors.greyColor,
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: const BorderSide(
-                            color: AppColors.greyColor,
-                          ),
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        hintText: 'Cardiologist',
-                        hintStyle: GoogleFonts.poppins(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(10),
+                    ),
+                    child: ListTile(
+                      title: TextFormField(
+                        controller: model.searchController,
+                        cursorColor: AppColors.systemBlackColor,
+                        style: GoogleFonts.poppins(
                           textStyle: TextStyle(
+                            color: AppColors.systemBlackColor,
                             fontWeight: FontWeight.w500,
                             fontSize: getProportionateScreenHeight(14),
                           ),
                         ),
-                        suffixIcon: const Icon(
-                          CupertinoIcons.search,
-                          color: AppColors.primaryColor,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                            vertical: 0,
+                            horizontal: getProportionateScreenWidth(10),
+                          ),
+                          focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: AppColors.greyColor,
+                            ),
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: AppColors.greyColor,
+                            ),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          hintText: 'Cardiologist',
+                          hintStyle: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: getProportionateScreenHeight(14),
+                            ),
+                          ),
+                          suffixIcon: const Icon(
+                            CupertinoIcons.search,
+                            color: AppColors.primaryColor,
+                          ),
                         ),
                       ),
-                    ),
-                    trailing: GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => FiltersPage(),
+                      trailing: GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => FiltersPage(),
+                          ),
                         ),
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: getProportionateScreenWidth(6),
-                          vertical: getProportionateScreenHeight(6),
-                        ),
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: SvgPicture.asset(
-                          AppSvgImages.filter,
-                          color: AppColors.whiteColor,
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getProportionateScreenWidth(6),
+                            vertical: getProportionateScreenHeight(6),
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: SvgPicture.asset(
+                            AppSvgImages.filter,
+                            color: AppColors.whiteColor,
+                          ),
                         ),
                       ),
                     ),
@@ -129,105 +132,105 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          body: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: getProportionateScreenWidth(25),
-            ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: getProportionateScreenHeight(10),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(
-                    svgs.length,
-                    (index) => GestureDetector(
-                      onTap: () => model.toggleSections(index),
-                      child: Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.center,
-                            width: getProportionateScreenWidth(60),
-                            height: getProportionateScreenHeight(60),
-                            decoration: BoxDecoration(
-                              color: model.sectionsToggles[index]
-                                  ? AppColors.primaryColor
-                                  : AppColors.whiteColor,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: SvgPicture.asset(
-                              svgs[index],
-                              color: model.sectionsToggles[index]
-                                  ? AppColors.whiteColor
-                                  : AppColors.primaryColor,
-                            ),
-                          ),
-                          SizedBox(
-                            height: getProportionateScreenHeight(10),
-                          ),
-                          DefaultText(
-                            text: sections[index],
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500,
-                          )
-                        ],
-                      ),
-                    ),
+            body: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(25),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: getProportionateScreenHeight(10),
                   ),
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(25),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    DefaultText(
-                      text: 'Top Doctors',
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: DefaultText(
-                        text: 'View all',
-                        color: AppColors.primaryColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: ListView.separated(
-                    padding: EdgeInsets.only(
-                      top: getProportionateScreenHeight(17),
-                      bottom: getProportionateScreenHeight(17),
-                    ),
-                    shrinkWrap: true,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: doctors.length,
-                    separatorBuilder: (_, index) => SizedBox(
-                      height: getProportionateScreenHeight(28),
-                    ),
-                    itemBuilder: (_, index) => GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => DoctorsProfilePage(
-                            image: doctors[index],
-                          ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: List.generate(
+                      svgs.length,
+                      (index) => GestureDetector(
+                        onTap: () => model.toggleSections(index),
+                        child: Column(
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              width: getProportionateScreenWidth(60),
+                              height: getProportionateScreenHeight(60),
+                              decoration: BoxDecoration(
+                                color: model.sectionsToggles[index]
+                                    ? AppColors.primaryColor
+                                    : AppColors.whiteColor,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: SvgPicture.asset(
+                                svgs[index],
+                                color: model.sectionsToggles[index]
+                                    ? AppColors.whiteColor
+                                    : AppColors.primaryColor,
+                              ),
+                            ),
+                            SizedBox(
+                              height: getProportionateScreenHeight(10),
+                            ),
+                            DefaultText(
+                              text: sections[index],
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                            )
+                          ],
                         ),
                       ),
-                      child: DoctorsContainer(
-                        image: doctors[index],
+                    ),
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(25),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      DefaultText(
+                        text: 'Top Doctors',
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: DefaultText(
+                          text: 'View all',
+                          color: AppColors.primaryColor,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: ListView.separated(
+                      padding: EdgeInsets.only(
+                        top: getProportionateScreenHeight(17),
+                        bottom: getProportionateScreenHeight(17),
+                      ),
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: doctors.length,
+                      separatorBuilder: (_, index) => SizedBox(
+                        height: getProportionateScreenHeight(28),
+                      ),
+                      itemBuilder: (_, index) => GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => DoctorsProfilePage(
+                              image: doctors[index],
+                            ),
+                          ),
+                        ),
+                        child: DoctorsContainer(
+                          image: doctors[index],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

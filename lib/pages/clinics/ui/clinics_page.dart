@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/clinics/provider/clinics_provider.dart';
 import 'package:kaz_med/pages/clinics/ui/clinics_container.dart';
+import 'package:kaz_med/pages/clinics/ui/clinics_filter_page.dart';
 import 'package:kaz_med/pages/clinics/ui/clinics_profile_page.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
@@ -11,7 +14,21 @@ import 'package:kaz_med/widgets/default_text.dart';
 import 'package:kaz_med/widgets/loading_view.dart';
 
 class ClinicsPage extends StatelessWidget {
-  const ClinicsPage({Key? key}) : super(key: key);
+  ClinicsPage({Key? key}) : super(key: key);
+
+  List<String> svgs = [
+    AppSvgImages.cardiologist,
+    AppSvgImages.dentist,
+    AppSvgImages.optician,
+    AppSvgImages.orthopedic,
+  ];
+
+  List<String> sections = [
+    'Cardiologist',
+    'Dentist',
+    'Optician',
+    'Optician',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +41,7 @@ class ClinicsPage extends StatelessWidget {
             : Scaffold(
                 appBar: PreferredSize(
                   preferredSize: Size.fromHeight(
-                    getProportionateScreenHeight(70),
+                    getProportionateScreenHeight(120),
                   ),
                   child: AppBar(
                     title: DefaultText(
@@ -35,6 +52,79 @@ class ClinicsPage extends StatelessWidget {
                     centerTitle: true,
                     backgroundColor: AppColors.defaultBackgroundColor,
                     elevation: 0,
+                    bottom: PreferredSize(
+                      preferredSize: Size.fromHeight(
+                        getProportionateScreenHeight(70),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(10),
+                        ),
+                        child: ListTile(
+                          title: TextFormField(
+                            controller: model.searchController,
+                            cursorColor: AppColors.systemBlackColor,
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                color: AppColors.systemBlackColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: getProportionateScreenHeight(14),
+                              ),
+                            ),
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 0,
+                                horizontal: getProportionateScreenWidth(10),
+                              ),
+                              focusedBorder: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: AppColors.greyColor,
+                                ),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: AppColors.greyColor,
+                                ),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              hintText: 'Cardiologist',
+                              hintStyle: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: getProportionateScreenHeight(14),
+                                ),
+                              ),
+                              suffixIcon: const Icon(
+                                CupertinoIcons.search,
+                                color: AppColors.primaryColor,
+                              ),
+                            ),
+                          ),
+                          trailing: GestureDetector(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => ClinicsFilters(),
+                              ),
+                            ),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: getProportionateScreenWidth(6),
+                                vertical: getProportionateScreenHeight(6),
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppColors.primaryColor,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: SvgPicture.asset(
+                                AppSvgImages.filter,
+                                color: AppColors.whiteColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 body: Padding(
@@ -43,50 +133,6 @@ class ClinicsPage extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              controller: model.searchController,
-                              decoration: InputDecoration(
-                                focusColor: AppColors.primaryColor,
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    gapPadding: 10),
-                                hintText: 'search clinics',
-                                hintStyle: const TextStyle(
-                                    color: AppColors.systemLightGrayColor),
-                                suffixIcon: const Icon(
-                                  Icons.search_outlined,
-                                  size: 35,
-                                ),
-                              ),
-                            ),
-                          ),
-                          UIHelper.horizontalSpace(
-                            getProportionateScreenWidth(25),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              model.toFilters(context);
-                            },
-                            child: Container(
-                              height: getProportionateScreenHeight(50),
-                              width: getProportionateScreenHeight(50),
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: AppColors.primaryColor,
-                              ),
-                              child: SvgPicture.asset(
-                                AppSvgImages.chat_ic,
-                                color: AppColors.whiteColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      UIHelper.verticalSpace(20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,

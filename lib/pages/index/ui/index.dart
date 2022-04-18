@@ -38,7 +38,7 @@ class IndexPage extends StatelessWidget {
 
 var _body = [
   HomePage(),
-  const ClinicsPage(),
+  ClinicsPage(),
   const ServicePage(),
   const ContactWithDoctor(),
   const Profile(),

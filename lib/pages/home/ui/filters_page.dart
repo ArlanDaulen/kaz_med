@@ -7,6 +7,7 @@ import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/home/provider/filters_provider.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
+import 'package:kaz_med/widgets/default_button.dart';
 import 'package:kaz_med/widgets/default_text.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
@@ -44,7 +45,35 @@ class FiltersPage extends StatelessWidget {
               ),
             ),
           ),
-          // bottomSheet: ,
+          bottomSheet: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidth(12),
+              vertical: getProportionateScreenHeight(16),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: DefaultButton(
+                    text: 'Reset',
+                    textColor: AppColors.primaryColor,
+                    color: AppColors.whiteColor,
+                    isWithShadow: true,
+                    press: () {},
+                  ),
+                ),
+                SizedBox(
+                  width: getProportionateScreenWidth(16),
+                ),
+                Expanded(
+                  child: DefaultButton(
+                    text: 'Apply',
+                    // color: AppColors.whiteColor,
+                    press: () {},
+                  ),
+                ),
+              ],
+            ),
+          ),
           body: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(25),
