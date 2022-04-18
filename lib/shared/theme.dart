@@ -47,11 +47,8 @@ class AppSvgImages {
   static const String search = 'assets/images/svg/search.svg';
   static const String message = 'assets/images/svg/message.svg';
   static const String successMessage = 'assets/images/svg/telegram_success.svg';
-<<<<<<< HEAD
   static const String filter = 'assets/images/svg/filter.svg';
-=======
   static const String filter_ic = 'assets/images/svg/filter_ic.svg';
->>>>>>> 6c39d2995d2dc6a7210b03663494c0a96fcae541
 }
 
 class AppPngImages {
