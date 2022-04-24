@@ -5,10 +5,10 @@ import 'package:kaz_med/shared/size_config.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class FiltersProvider extends BaseBloc {
-  SfRangeValues distanceValues = SfRangeValues(200, 7000);
-  SfRangeValues ratingValues = SfRangeValues(1, 5);
-  SfRangeValues priceValues = SfRangeValues(2000, 20000);
-  SfRangeValues experienceValues = SfRangeValues(1, 10);
+  SfRangeValues distanceValues = const SfRangeValues(200, 7000);
+  SfRangeValues ratingValues = const SfRangeValues(1, 5);
+  SfRangeValues priceValues = const SfRangeValues(2000, 20000);
+  SfRangeValues experienceValues = const SfRangeValues(1, 10);
 
   init(BuildContext context) {
     setLoading(true);

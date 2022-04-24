@@ -5,6 +5,7 @@ import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/booking/ui/booking_page.dart';
 import 'package:kaz_med/pages/home/provider/doctors_profile_provider.dart';
 import 'package:kaz_med/pages/home/ui/message_page.dart';
+import 'package:kaz_med/pages/home/ui/review_page.dart';
 import 'package:kaz_med/pages/home/ui/widgets/doctors_container.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
@@ -25,6 +26,11 @@ class DoctorsProfilePage extends StatelessWidget {
     'Surgery for coronary heart disease',
     'Combined cardiac procedures',
     'Diagnosis and treatment of heart conditions',
+  ];
+
+  List<String> fees = [
+    'reception - consultation of a neurologist - 10 000 tg',
+    'appointment - consultation with an  - 6000 tg endoscopist',
   ];
 
   @override
@@ -117,9 +123,61 @@ class DoctorsProfilePage extends StatelessWidget {
                   ),
                   _buildPointers(services),
                   _divider(),
-                  _buildOtherTiles('Reviews'),
+                  GestureDetector(
+                    onTap: () => model.setReviewsTap(),
+                    child: _buildOtherTiles('Reviews', model.reviewsTapped),
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(
+                        model.reviewsTapped ? 10 : 0),
+                  ),
+                  model.reviewsTapped
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(AppSvgImages.star),
+                                SizedBox(
+                                  width: getProportionateScreenWidth(5),
+                                ),
+                                DefaultText(
+                                  text: '4.7',
+                                  fontSize: 10,
+                                  color: AppColors.primaryColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                SizedBox(
+                                  width: getProportionateScreenWidth(10),
+                                ),
+                                DefaultText(
+                                  text: 'Aigul Alabaeva',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.grey,
+                                ),
+                              ],
+                            ),
+                            DefaultText(
+                              isCenter: false,
+                              text:
+                                  'I want to say thank you to the Department of Traumatology! Thanks to all doctors and nurses for professional service',
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ],
+                        )
+                      : const SizedBox(),
                   _divider(),
-                  _buildOtherTiles('Fees'),
+                  GestureDetector(
+                    onTap: () => model.setFeesTap(),
+                    child: _buildOtherTiles('Fees', model.feesTapped),
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(10),
+                  ),
+                  model.feesTapped ? _buildPointers(fees) : const SizedBox(),
                   SizedBox(
                     height: getProportionateScreenHeight(96),
                   ),
@@ -146,7 +204,7 @@ class DoctorsProfilePage extends StatelessWidget {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const MessagePage(),
+                    builder: (_) => const ReviewPage(),
                   ),
                 ),
                 child: Container(
@@ -174,7 +232,7 @@ class DoctorsProfilePage extends StatelessWidget {
                   press: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => BookingPage(),
+                      builder: (_) => const BookingPage(),
                     ),
                   ),
                 ),
@@ -232,20 +290,23 @@ class DoctorsProfilePage extends StatelessWidget {
     );
   }
 
-  _buildOtherTiles(String text) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        DefaultText(
-          text: text,
-          fontSize: 15,
-          fontWeight: FontWeight.w600,
-        ),
-        const Icon(
-          Icons.arrow_forward_ios,
-          color: AppColors.systemBlackColor,
-        ),
-      ],
+  _buildOtherTiles(String text, bool tapped) {
+    return Container(
+      color: AppColors.whiteColor.withOpacity(0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          DefaultText(
+            text: text,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+          Icon(
+            tapped ? CupertinoIcons.chevron_down : Icons.arrow_forward_ios,
+            color: AppColors.systemBlackColor,
+          ),
+        ],
+      ),
     );
   }
 }

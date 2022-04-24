@@ -140,67 +140,47 @@ class ClinicsFilters extends StatelessWidget {
                       ),
                       DefaultText(
                         text: 'Schedule',
-                        fontSize: 15,
                         fontWeight: FontWeight.w600,
-                      ),
-                      SizedBox(
-                        height: getProportionateScreenHeight(20),
+                        fontSize: 15,
                       ),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: getProportionateScreenWidth(220),
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.symmetric(
-                                vertical: getProportionateScreenHeight(6),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Column(
+                            children: [
+                              Spacer(),
+                              DefaultText(
+                                text: 'time',
+                                fontWeight: FontWeight.w600,
+                                fontSize: 15,
                               ),
-                              decoration: BoxDecoration(
-                                color: AppColors.whiteColor,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.shade400,
-                                    spreadRadius: 1,
-                                    blurRadius: 1,
-                                    offset: const Offset(
-                                        0, 3), // changes position of shadow
+                              Spacer(),
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  width: getProportionateScreenWidth(120),
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    color: AppColors.whiteColor,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: AppColors.shadowColor,
+                                        offset: const Offset(0, 4),
+                                        blurRadius: 1,
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              child: DefaultText(
-                                text: 'Around the clock',
-                                color: AppColors.primaryColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            UIHelper.verticalSpace(20),
-                            Container(
-                              width: getProportionateScreenWidth(220),
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.symmetric(
-                                vertical: getProportionateScreenHeight(6),
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppColors.primaryColor,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.shade400,
-                                    spreadRadius: 1,
-                                    blurRadius: 1,
-                                    offset: Offset(0, 3),
+                                  child: DefaultText(
+                                    text: '12:30',
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.primaryColor,
+                                    fontSize: 15,
                                   ),
-                                ],
+                                ),
                               ),
-                              child: DefaultText(
-                                text: 'Works on weekends',
-                                color: AppColors.whiteColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       const Spacer(),
