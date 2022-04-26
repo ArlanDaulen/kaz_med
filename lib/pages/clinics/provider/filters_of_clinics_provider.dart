@@ -2,11 +2,10 @@ import 'package:kaz_med/base/base_bloc.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class ClinicsFiltersProvider extends BaseBloc {
-  SfRangeValues distanceValues = SfRangeValues(200, 7000);
-  SfRangeValues ratingValues = SfRangeValues(1, 5);
-  SfRangeValues priceValues = SfRangeValues(2000, 20000);
+  SfRangeValues distanceValues = const SfRangeValues(200.0, 7000.0);
+  SfRangeValues ratingValues = const SfRangeValues(1.0, 5.0);
+  SfRangeValues priceValues = const SfRangeValues(2000.0, 20000.0);
 
-  
   setDistanceValues(dynamic newValues) {
     distanceValues = newValues;
     notifyListeners();
@@ -21,5 +20,4 @@ class ClinicsFiltersProvider extends BaseBloc {
     priceValues = newValues;
     notifyListeners();
   }
-
 }

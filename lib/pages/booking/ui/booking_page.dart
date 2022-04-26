@@ -223,7 +223,9 @@ class BookingPage extends StatelessWidget {
                 const Spacer(),
                 DefaultButton(
                   text: 'Next',
-                  press: () => model.isButtonEnabled ? log('Ok') : log('Error'),
+                  press: () => model.isButtonEnabled
+                      ? model.toPayment(context)
+                      : log('Error'),
                   isButtonEnabled: model.isButtonEnabled,
                 ),
                 SizedBox(

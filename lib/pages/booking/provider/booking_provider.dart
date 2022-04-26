@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_bloc.dart';
+import 'package:kaz_med/pages/payment/ui/payment_page.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../../shared/size_config.dart';
@@ -161,5 +162,10 @@ class BookingPageProvider extends BaseBloc {
       case 'December':
         return 12;
     }
+  }
+
+  toPayment(context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const PaymentPage()));
   }
 }
