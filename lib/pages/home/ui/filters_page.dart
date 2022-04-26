@@ -48,7 +48,7 @@ class FiltersPage extends StatelessWidget {
           bottomSheet: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: getProportionateScreenWidth(12),
-              vertical: getProportionateScreenHeight(16),
+              vertical: getProportionateScreenHeight(36),
             ),
             child: Row(
               children: [
