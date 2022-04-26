@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/clinics/provider/clinics_profile_provider.dart';
+import 'package:kaz_med/pages/clinics/provider/clinics_provider.dart';
 import 'package:kaz_med/pages/clinics/ui/clinics_container.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
@@ -10,7 +11,10 @@ import 'package:kaz_med/widgets/loading_view.dart';
 
 class ClinicsProfilePage extends StatelessWidget {
   final String image;
-  const ClinicsProfilePage({Key? key, required this.image}) : super(key: key);
+  final ClinicsProvider clinicsProvider;
+  const ClinicsProfilePage(
+      {Key? key, required this.image, required this.clinicsProvider})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +65,10 @@ class ClinicsProfilePage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ClinicsContainer(image: image),
+                        ClinicsContainer(
+                          image: image,
+                          clinicsProvider: clinicsProvider,
+                        ),
                         SizedBox(
                           height: getProportionateScreenHeight(17),
                         ),

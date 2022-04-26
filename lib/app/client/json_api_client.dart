@@ -11,9 +11,10 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
   // Routes
   const PlaceholderClient._() : super();
   const factory PlaceholderClient.login(String name, String password) = _Login;
+  const factory PlaceholderClient.getAllDoctors() = _GetAllDoctors;
 
   @override
-  String get baseURL => 'https://144a-46-34-146-223.ngrok.io/';
+  String get baseURL => 'http://97a0-176-64-18-134.ngrok.io/';
 
   @override
   dynamic get body {
@@ -45,6 +46,7 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
   String get path {
     return this.when<String>(
       login: (String name, String password) => 'auth-service/auth',
+      getAllDoctors: () => 'med-service/doctor/public/all',
     );
   }
 

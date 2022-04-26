@@ -23,6 +23,10 @@ class _$PlaceholderClientTearOff {
       password,
     );
   }
+
+  _GetAllDoctors getAllDoctors() {
+    return const _GetAllDoctors();
+  }
 }
 
 /// @nodoc
@@ -30,44 +34,43 @@ const $PlaceholderClient = _$PlaceholderClientTearOff();
 
 /// @nodoc
 mixin _$PlaceholderClient {
-  String get name => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String name, String password) login,
+    required TResult Function() getAllDoctors,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String name, String password)? login,
+    TResult Function()? getAllDoctors,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? login,
+    TResult Function()? getAllDoctors,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
+    required TResult Function(_GetAllDoctors value) getAllDoctors,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_GetAllDoctors value)? getAllDoctors,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_GetAllDoctors value)? getAllDoctors,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $PlaceholderClientCopyWith<PlaceholderClient> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -76,7 +79,6 @@ abstract class $PlaceholderClientCopyWith<$Res> {
   factory $PlaceholderClientCopyWith(
           PlaceholderClient value, $Res Function(PlaceholderClient) then) =
       _$PlaceholderClientCopyWithImpl<$Res>;
-  $Res call({String name, String password});
 }
 
 /// @nodoc
@@ -87,31 +89,12 @@ class _$PlaceholderClientCopyWithImpl<$Res>
   final PlaceholderClient _value;
   // ignore: unused_field
   final $Res Function(PlaceholderClient) _then;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? password = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: password == freezed
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$LoginCopyWith<$Res>
-    implements $PlaceholderClientCopyWith<$Res> {
+abstract class _$LoginCopyWith<$Res> {
   factory _$LoginCopyWith(_Login value, $Res Function(_Login) then) =
       __$LoginCopyWithImpl<$Res>;
-  @override
   $Res call({String name, String password});
 }
 
@@ -183,6 +166,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String name, String password) login,
+    required TResult Function() getAllDoctors,
   }) {
     return login(name, password);
   }
@@ -191,6 +175,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String name, String password)? login,
+    TResult Function()? getAllDoctors,
   }) {
     return login?.call(name, password);
   }
@@ -199,6 +184,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String name, String password)? login,
+    TResult Function()? getAllDoctors,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -211,6 +197,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Login value) login,
+    required TResult Function(_GetAllDoctors value) getAllDoctors,
   }) {
     return login(this);
   }
@@ -219,6 +206,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_GetAllDoctors value)? getAllDoctors,
   }) {
     return login?.call(this);
   }
@@ -227,6 +215,7 @@ class _$_Login extends _Login {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Login value)? login,
+    TResult Function(_GetAllDoctors value)? getAllDoctors,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -240,11 +229,113 @@ abstract class _Login extends PlaceholderClient {
   const factory _Login(String name, String password) = _$_Login;
   const _Login._() : super._();
 
-  @override
   String get name => throw _privateConstructorUsedError;
-  @override
   String get password => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$LoginCopyWith<_Login> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$GetAllDoctorsCopyWith<$Res> {
+  factory _$GetAllDoctorsCopyWith(
+          _GetAllDoctors value, $Res Function(_GetAllDoctors) then) =
+      __$GetAllDoctorsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$GetAllDoctorsCopyWithImpl<$Res>
+    extends _$PlaceholderClientCopyWithImpl<$Res>
+    implements _$GetAllDoctorsCopyWith<$Res> {
+  __$GetAllDoctorsCopyWithImpl(
+      _GetAllDoctors _value, $Res Function(_GetAllDoctors) _then)
+      : super(_value, (v) => _then(v as _GetAllDoctors));
+
+  @override
+  _GetAllDoctors get _value => super._value as _GetAllDoctors;
+}
+
+/// @nodoc
+
+class _$_GetAllDoctors extends _GetAllDoctors {
+  const _$_GetAllDoctors() : super._();
+
+  @override
+  String toString() {
+    return 'PlaceholderClient.getAllDoctors()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _GetAllDoctors);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name, String password) login,
+    required TResult Function() getAllDoctors,
+  }) {
+    return getAllDoctors();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String name, String password)? login,
+    TResult Function()? getAllDoctors,
+  }) {
+    return getAllDoctors?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name, String password)? login,
+    TResult Function()? getAllDoctors,
+    required TResult orElse(),
+  }) {
+    if (getAllDoctors != null) {
+      return getAllDoctors();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_GetAllDoctors value) getAllDoctors,
+  }) {
+    return getAllDoctors(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_GetAllDoctors value)? getAllDoctors,
+  }) {
+    return getAllDoctors?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_GetAllDoctors value)? getAllDoctors,
+    required TResult orElse(),
+  }) {
+    if (getAllDoctors != null) {
+      return getAllDoctors(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAllDoctors extends PlaceholderClient {
+  const factory _GetAllDoctors() = _$_GetAllDoctors;
+  const _GetAllDoctors._() : super._();
 }

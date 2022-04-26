@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/booking/ui/booking_page.dart';
 import 'package:kaz_med/pages/home/provider/doctors_profile_provider.dart';
-import 'package:kaz_med/pages/home/ui/message_page.dart';
+import 'package:kaz_med/pages/home/provider/home_provider.dart';
 import 'package:kaz_med/pages/home/ui/review_page.dart';
 import 'package:kaz_med/pages/home/ui/widgets/doctors_container.dart';
 import 'package:kaz_med/shared/size_config.dart';
@@ -13,8 +13,11 @@ import 'package:kaz_med/widgets/default_button.dart';
 import 'package:kaz_med/widgets/default_text.dart';
 
 class DoctorsProfilePage extends StatelessWidget {
-  DoctorsProfilePage({Key? key, required this.image}) : super(key: key);
+  DoctorsProfilePage(
+      {Key? key, required this.image, required this.homeProvider})
+      : super(key: key);
   final String image;
+  final HomeProvider homeProvider;
 
   List<String> qualifiactions = [
     'Bachelor of Medicine, Bachelor of Surgery (MBBS), 1989',
@@ -82,7 +85,10 @@ class DoctorsProfilePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DoctorsContainer(image: image),
+                  DoctorsContainer(
+                    image: image,
+                    model: homeProvider,
+                  ),
                   SizedBox(
                     height: getProportionateScreenHeight(17),
                   ),
@@ -95,8 +101,9 @@ class DoctorsProfilePage extends StatelessWidget {
                     height: getProportionateScreenHeight(10),
                   ),
                   DefaultText(
-                    text:
-                        'Akhmetova Aygerim was born and raised in Kazakhstan, and completed her medical degree at the Kazakh National Medical University  . She is fully trained in all aspects of cardiology and a founding member of Blitz & Hertz.',
+                    text: homeProvider.doctors!.about != null
+                        ? homeProvider.doctors!.about.toString()
+                        : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
                     isCenter: false,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
@@ -111,7 +118,9 @@ class DoctorsProfilePage extends StatelessWidget {
                   SizedBox(
                     height: getProportionateScreenHeight(10),
                   ),
-                  _buildPointers(qualifiactions),
+                  _buildPointers(homeProvider.doctors!.qualifications != null
+                      ? [homeProvider.doctors!.qualifications!]
+                      : qualifiactions),
                   _divider(),
                   DefaultText(
                     text: 'Services',
@@ -177,7 +186,11 @@ class DoctorsProfilePage extends StatelessWidget {
                   SizedBox(
                     height: getProportionateScreenHeight(10),
                   ),
-                  model.feesTapped ? _buildPointers(fees) : const SizedBox(),
+                  model.feesTapped
+                      ? _buildPointers(homeProvider.doctors!.fees != null
+                          ? [homeProvider.doctors!.fees!.toString()]
+                          : fees)
+                      : const SizedBox(),
                   SizedBox(
                     height: getProportionateScreenHeight(96),
                   ),

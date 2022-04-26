@@ -8,6 +8,7 @@ import 'package:kaz_med/pages/profile/ui/profile.dart';
 import 'package:kaz_med/pages/service/ui/service_page.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
+import 'package:kaz_med/widgets/loading_view.dart';
 
 class IndexPage extends StatelessWidget {
   const IndexPage({Key? key}) : super(key: key);

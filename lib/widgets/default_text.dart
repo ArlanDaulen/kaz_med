@@ -10,6 +10,7 @@ class DefaultText extends StatelessWidget {
   final double fontSize;
   final Color? color;
   final bool? isCenter;
+  final bool? isOverFlow;
 
   DefaultText({
     required this.text,
@@ -17,6 +18,7 @@ class DefaultText extends StatelessWidget {
     this.fontSize = 14,
     this.color = Colors.black,
     this.isCenter = true,
+    this.isOverFlow = false,
   });
 
   @override
@@ -24,6 +26,8 @@ class DefaultText extends StatelessWidget {
     return Text(
       text,
       textAlign: isCenter! ? TextAlign.center : TextAlign.start,
+      overflow: isOverFlow! ? TextOverflow.ellipsis : null,
+      maxLines: 2,
       style: GoogleFonts.poppins(
         textStyle: TextStyle(
           color: color,
