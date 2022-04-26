@@ -188,6 +188,52 @@ class FiltersPage extends StatelessWidget {
                         model.setExperienceValues(newValues),
                   ),
                 ),
+                DefaultText(
+                  text: 'Schedule',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15,
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                      children: [
+                        Spacer(),
+                        DefaultText(
+                          text: 'time',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15,
+                        ),
+                        Spacer(),
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            width: getProportionateScreenWidth(120),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: AppColors.whiteColor,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.shadowColor,
+                                  offset: const Offset(0, 4),
+                                  blurRadius: 1,
+                                ),
+                              ],
+                            ),
+                            child: DefaultText(
+                              text: '12:30',
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.primaryColor,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Spacer(
                   flex: 3,
                 ),

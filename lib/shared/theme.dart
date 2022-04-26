@@ -52,7 +52,6 @@ class AppSvgImages {
   static const String successMessage = 'assets/images/svg/telegram_success.svg';
   static const String filter = 'assets/images/svg/filter.svg';
   static const String filter_ic = 'assets/images/svg/filter_ic.svg';
-
   static const String debit_card_ic = 'assets/images/svg/debit_card_ic.svg';
   static const String bank_ic = 'assets/images/svg/bank_ic.svg';
   static const String other_payment_ic =
@@ -63,6 +62,7 @@ class AppSvgImages {
   static const String language_ic = 'assets/images/svg/language_ic.svg';
   static const String logout = 'assets/images/svg/logout.svg';
   static const String avatar = 'assets/images/svg/avatar.svg';
+  static const String star = 'assets/images/svg/star.svg';
 }
 
 class AppPngImages {

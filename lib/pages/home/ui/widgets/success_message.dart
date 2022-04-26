@@ -33,7 +33,7 @@ class SuccessMessage extends StatelessWidget {
           ),
           const Spacer(),
           DefaultText(
-            text: 'Your message has been sent',
+            text: 'Thanks for review!',
             fontSize: 12,
             fontWeight: FontWeight.w500,
             color: AppColors.greyColor,
