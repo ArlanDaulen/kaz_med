@@ -10,6 +10,7 @@ import 'package:kaz_med/pages/home/ui/widgets/doctors_container.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
 import 'package:kaz_med/widgets/default_text.dart';
+import 'package:kaz_med/widgets/loading_view.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -69,6 +70,8 @@ class HomePage extends StatelessWidget {
                       title: TextFormField(
                         controller: model.searchController,
                         cursorColor: AppColors.systemBlackColor,
+                        onFieldSubmitted: (value) async =>
+                            await model.searchDoctorByName(),
                         style: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             color: AppColors.systemBlackColor,
@@ -92,7 +95,7 @@ class HomePage extends StatelessWidget {
                             ),
                             borderRadius: BorderRadius.circular(4),
                           ),
-                          hintText: 'Cardiologist',
+                          hintText: "Doctor's name",
                           hintStyle: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w500,
@@ -132,106 +135,112 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            body: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(25),
-              ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: getProportionateScreenHeight(10),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: List.generate(
-                      svgs.length,
-                      (index) => GestureDetector(
-                        onTap: () => model.toggleSections(index),
-                        child: Column(
-                          children: [
-                            Container(
-                              alignment: Alignment.center,
-                              width: getProportionateScreenWidth(60),
-                              height: getProportionateScreenHeight(60),
-                              decoration: BoxDecoration(
-                                color: model.sectionsToggles[index]
-                                    ? AppColors.primaryColor
-                                    : AppColors.whiteColor,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: SvgPicture.asset(
-                                svgs[index],
-                                color: model.sectionsToggles[index]
-                                    ? AppColors.whiteColor
-                                    : AppColors.primaryColor,
-                              ),
-                            ),
-                            SizedBox(
-                              height: getProportionateScreenHeight(10),
-                            ),
-                            DefaultText(
-                              text: sections[index],
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                            )
-                          ],
-                        ),
-                      ),
+            body: model.isLoading
+                ? LoadingView()
+                : Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(25),
                     ),
-                  ),
-                  SizedBox(
-                    height: getProportionateScreenHeight(25),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      DefaultText(
-                        text: 'Top Doctors',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: DefaultText(
-                          text: 'View all',
-                          color: AppColors.primaryColor,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: getProportionateScreenHeight(10),
                         ),
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                    child: ListView.separated(
-                      padding: EdgeInsets.only(
-                        top: getProportionateScreenHeight(17),
-                        bottom: getProportionateScreenHeight(17),
-                      ),
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: doctors.length,
-                      separatorBuilder: (_, index) => SizedBox(
-                        height: getProportionateScreenHeight(28),
-                      ),
-                      itemBuilder: (_, index) => GestureDetector(
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => DoctorsProfilePage(
-                              image: doctors[index],
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: List.generate(
+                            svgs.length,
+                            (index) => GestureDetector(
+                              onTap: () => model.toggleSections(index),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.center,
+                                    width: getProportionateScreenWidth(60),
+                                    height: getProportionateScreenHeight(60),
+                                    decoration: BoxDecoration(
+                                      color: model.sectionsToggles[index]
+                                          ? AppColors.primaryColor
+                                          : AppColors.whiteColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: SvgPicture.asset(
+                                      svgs[index],
+                                      color: model.sectionsToggles[index]
+                                          ? AppColors.whiteColor
+                                          : AppColors.primaryColor,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: getProportionateScreenHeight(10),
+                                  ),
+                                  DefaultText(
+                                    text: sections[index],
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w500,
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                        child: DoctorsContainer(
-                          image: doctors[index],
+                        SizedBox(
+                          height: getProportionateScreenHeight(25),
                         ),
-                      ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            DefaultText(
+                              text: 'Top Doctors',
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: DefaultText(
+                                text: 'View all',
+                                color: AppColors.primaryColor,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Expanded(
+                          child: model.isSendRequest
+                              ? LoadingView()
+                              : ListView.separated(
+                                  padding: EdgeInsets.only(
+                                    top: getProportionateScreenHeight(17),
+                                    bottom: getProportionateScreenHeight(17),
+                                  ),
+                                  shrinkWrap: true,
+                                  physics: const BouncingScrollPhysics(),
+                                  itemCount: 1,
+                                  separatorBuilder: (_, index) => SizedBox(
+                                    height: getProportionateScreenHeight(28),
+                                  ),
+                                  itemBuilder: (_, index) => GestureDetector(
+                                    onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => DoctorsProfilePage(
+                                          image: doctors[index],
+                                          homeProvider: model,
+                                        ),
+                                      ),
+                                    ),
+                                    child: DoctorsContainer(
+                                      image: doctors[index],
+                                      model: model,
+                                    ),
+                                  ),
+                                ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
           ),
         );
       },

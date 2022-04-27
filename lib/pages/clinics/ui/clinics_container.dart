@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kaz_med/pages/clinics/provider/clinics_provider.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
 import 'package:kaz_med/widgets/default_text.dart';
 
 class ClinicsContainer extends StatelessWidget {
   final String image;
-  const ClinicsContainer({Key? key, required this.image}) : super(key: key);
+  final ClinicsProvider clinicsProvider;
+  const ClinicsContainer(
+      {Key? key, required this.image, required this.clinicsProvider})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class ClinicsContainer extends StatelessWidget {
               children: [
                 DefaultText(
                   isCenter: false,
-                  text: 'Happy Family Clinic',
+                  text: clinicsProvider.medCenters!.medCenterName!,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
@@ -48,7 +52,7 @@ class ClinicsContainer extends StatelessWidget {
                 ),
                 DefaultText(
                   isCenter: false,
-                  text: 'Multidisciplinary Medical Center Family Planning',
+                  text: clinicsProvider.medCenters!.medCenterAddress!,
                   fontWeight: FontWeight.w500,
                   color: AppColors.greyColor,
                 ),
@@ -78,7 +82,8 @@ class ClinicsContainer extends StatelessWidget {
                             width: getProportionateScreenWidth(5),
                           ),
                           DefaultText(
-                            text: '4.7',
+                            text:
+                                clinicsProvider.medCenters!.rating!.toString(),
                             fontSize: 10,
                             fontWeight: FontWeight.w500,
                             color: AppColors.primaryColor,
@@ -100,7 +105,9 @@ class ClinicsContainer extends StatelessWidget {
                           width: getProportionateScreenWidth(10),
                         ),
                         DefaultText(
-                          text: '4km away',
+                          text: clinicsProvider.medCenters!.distance != null
+                              ? clinicsProvider.medCenters!.distance!
+                              : 'empty',
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           color: AppColors.greyColor,
