@@ -40,7 +40,7 @@ class ProfileProvider extends BaseBloc {
   //           builder: (context) => LogoutWidget(
   //                 profileProvider: provider,
   //               )));
-  // }
+  // };yugjighug
 
   void exit(BuildContext context) {
     Navigator.pushAndRemoveUntil(context,

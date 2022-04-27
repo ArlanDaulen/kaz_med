@@ -18,6 +18,7 @@ class AnalysisProvider extends BaseBloc {
     'OS test',
     'Krasavcik test',
     'Prosto test',
+    'Ne prosto test test',
   ];
 
   toAnalysisDetail(context) {
