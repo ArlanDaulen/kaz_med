@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/profile/provider/profile_provider.dart';
+import 'package:kaz_med/pages/profile/ui/language.dart';
+import 'package:kaz_med/pages/profile/ui/logout.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
 import 'package:kaz_med/shared/ui_helper.dart';
@@ -15,6 +17,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseProvider<ProfileProvider>(
       model: ProfileProvider(),
+      onReady: (_) => _.init(context),
       builder: (context, model, child) {
         return model.isLoading
             ? const LoadingView()
@@ -88,7 +91,9 @@ class Profile extends StatelessWidget {
                         ),
                       ),
                       ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          model.toAnalysis(context);
+                        },
                         leading: SvgPicture.asset(
                           AppSvgImages.clipboard_ic,
                           width: getProportionateScreenWidth(35),
@@ -103,24 +108,28 @@ class Profile extends StatelessWidget {
                           color: AppColors.primaryColor,
                         ),
                       ),
+                      // ListTile(
+                      //   onTap: () {},
+                      //   leading: SvgPicture.asset(
+                      //     AppSvgImages.clipboard_ic,
+                      //     width: getProportionateScreenWidth(35),
+                      //     height: getProportionateScreenHeight(35),
+                      //   ),
+                      //   title: const Text(
+                      //     'Test results',
+                      //     style: TextStyle(fontSize: 18),
+                      //   ),
+                      //   trailing: const Icon(
+                      //     Icons.arrow_forward_ios,
+                      //     color: AppColors.primaryColor,
+                      //   ),
+                      // ),
                       ListTile(
-                        onTap: () {},
-                        leading: SvgPicture.asset(
-                          AppSvgImages.clipboard_ic,
-                          width: getProportionateScreenWidth(35),
-                          height: getProportionateScreenHeight(35),
-                        ),
-                        title: const Text(
-                          'Test results',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                      ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (context) => const LanguageWidget());
+                        },
                         leading: SvgPicture.asset(
                           AppSvgImages.language_ic,
                           width: getProportionateScreenWidth(35),
@@ -136,7 +145,16 @@ class Profile extends StatelessWidget {
                         ),
                       ),
                       ListTile(
-                        onTap: () {},
+                        onTap: () {
+                          // model.toLogout(context);
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return LogoutWidget(
+                                  profileProvider: model,
+                                );
+                              });
+                        },
                         leading:
                             // Icon(Icons.logout),
                             SvgPicture.asset(

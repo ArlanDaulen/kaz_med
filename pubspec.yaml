@@ -45,6 +45,8 @@ dependencies:
   syncfusion_flutter_datepicker: ^20.1.47
   syncfusion_flutter_sliders: ^20.1.48
   mask_text_input_formatter: ^2.3.0
+  # translator/localization
+  easy_localization: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +76,7 @@ flutter:
   assets:
     - assets/images/svg/
     - assets/images/png/
+    - assets/lang/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

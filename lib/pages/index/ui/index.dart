@@ -5,7 +5,7 @@ import 'package:kaz_med/pages/contact/ui/contact_with_doctor.dart';
 import 'package:kaz_med/pages/home/ui/home_page.dart';
 import 'package:kaz_med/pages/index/provider/index_provider.dart';
 import 'package:kaz_med/pages/profile/ui/profile.dart';
-import 'package:kaz_med/pages/service/ui/service_page.dart';
+import 'package:kaz_med/pages/specialty/ui/specialty_page.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
 
@@ -39,7 +39,7 @@ class IndexPage extends StatelessWidget {
 var _body = [
   HomePage(),
   ClinicsPage(),
-  const ServicePage(),
-  const ContactWithDoctor(),
+  const SpecialtyPage(),
+  // const ContactWithDoctor(),
   const Profile(),
 ];

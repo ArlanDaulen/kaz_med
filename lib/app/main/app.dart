@@ -1,4 +1,5 @@
 import 'package:connectivity/connectivity.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../base/base_provider.dart';
@@ -21,11 +22,11 @@ class MyApp extends StatelessWidget {
           stream: model.connectionStatusController.stream,
           builder: (context, snapshot) {
             return MaterialApp(
-              // localizationsDelegates: context.localizationDelegates,
-              // supportedLocales: context.supportedLocales,
-              // locale: context.locale,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
               debugShowCheckedModeBanner: false,
-              title: 'Kettik',
+              title: 'KazMed',
               navigatorKey: GlobalVariable.navState,
               theme: ThemeData(
                 primaryColor: AppColors.primaryColor,
