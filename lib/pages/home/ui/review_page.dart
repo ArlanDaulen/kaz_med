@@ -48,8 +48,8 @@ class ReviewPage extends StatelessWidget {
             ),
             bottomSheet: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(25),
-              ),
+                  horizontal: getProportionateScreenWidth(25),
+                  vertical: getProportionateScreenHeight(25)),
               child: DefaultButton(
                 text: 'Send',
                 press: () => showCupertinoDialog(

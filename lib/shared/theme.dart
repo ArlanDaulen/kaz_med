@@ -24,7 +24,12 @@ class AppColors {
 class AppSvgImages {
   // Nav Bar
   static const String home_ic = 'assets/images/svg/home_ic.svg';
-  // static const String home_ic = 'assets/images/svg/home_ic.svg';
+  static const String doctors_active_ic =
+      'assets/images/svg/doctors_active_ic.svg';
+  static const String clinics_inactive_ic =
+      'assets/images/svg/clinics_inactive_ic.svg';
+  static const String clinics_active_ic =
+      'assets/images/svg/clinics_active_ic.svg';
   static const String search_active_ic =
       'assets/images/svg/search_active_ic.svg';
   static const String chat_ic = 'assets/images/svg/chat_ic.svg';

@@ -22,12 +22,13 @@ class IndexProvider extends BaseBloc {
     items = [
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
-          AppSvgImages.home_ic,
+          AppSvgImages.doctors_active_ic,
+          color: AppColors.primaryColor.withOpacity(0.15),
           width: getProportionateScreenHeight(18),
           height: getProportionateScreenHeight(20),
         ),
         activeIcon: SvgPicture.asset(
-          AppSvgImages.home_ic,
+          AppSvgImages.doctors_active_ic,
           width: getProportionateScreenHeight(18),
           height: getProportionateScreenHeight(20),
           color: AppColors.primaryColor,
@@ -36,12 +37,13 @@ class IndexProvider extends BaseBloc {
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
-          AppSvgImages.home_ic,
+          AppSvgImages.clinics_active_ic,
+          color: AppColors.primaryColor.withOpacity(0.15),
           width: getProportionateScreenHeight(18),
           height: getProportionateScreenHeight(20),
         ),
         activeIcon: SvgPicture.asset(
-          AppSvgImages.home_ic,
+          AppSvgImages.clinics_active_ic,
           width: getProportionateScreenHeight(18),
           height: getProportionateScreenHeight(20),
           color: AppColors.primaryColor,
@@ -51,6 +53,7 @@ class IndexProvider extends BaseBloc {
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
           AppSvgImages.search_active_ic,
+          color: AppColors.primaryColor.withOpacity(0.15),
           width: getProportionateScreenHeight(18),
           height: getProportionateScreenHeight(20),
         ),
@@ -60,25 +63,26 @@ class IndexProvider extends BaseBloc {
           height: getProportionateScreenHeight(20),
           color: AppColors.primaryColor,
         ),
-        label: 'Search',
+        label: 'Specialties',
       ),
-      BottomNavigationBarItem(
-        icon: SvgPicture.asset(
-          AppSvgImages.chat_ic,
-          width: getProportionateScreenHeight(18),
-          height: getProportionateScreenHeight(20),
-        ),
-        activeIcon: SvgPicture.asset(
-          AppSvgImages.chat_ic,
-          width: getProportionateScreenHeight(18),
-          height: getProportionateScreenHeight(20),
-          color: AppColors.primaryColor,
-        ),
-        label: 'Chat',
-      ),
+      // BottomNavigationBarItem(
+      //   icon: SvgPicture.asset(
+      //     AppSvgImages.chat_ic,
+      //     width: getProportionateScreenHeight(18),
+      //     height: getProportionateScreenHeight(20),
+      //   ),
+      //   activeIcon: SvgPicture.asset(
+      //     AppSvgImages.chat_ic,
+      //     width: getProportionateScreenHeight(18),
+      //     height: getProportionateScreenHeight(20),
+      //     color: AppColors.primaryColor,
+      //   ),
+      //   label: 'Chat',
+      // ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
           AppSvgImages.profile_ic,
+          color: AppColors.primaryColor.withOpacity(0.15),
           width: getProportionateScreenHeight(18),
           height: getProportionateScreenHeight(20),
         ),

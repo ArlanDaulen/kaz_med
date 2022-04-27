@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:connectivity/connectivity.dart';
+import 'package:easy_localization/easy_localization.dart';
 // import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/pages/index/ui/index.dart';
@@ -25,7 +26,7 @@ class MyAppModel extends BaseBloc {
     log('init called');
 
     // localization init
-    // await EasyLocalization.ensureInitialized();
+    await EasyLocalization.ensureInitialized();
     await checkOnboardinIsSkipped();
     await checkAuth();
     var result = await Connectivity().checkConnectivity();

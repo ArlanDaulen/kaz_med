@@ -1,20 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_provider.dart';
-import 'package:kaz_med/pages/profile/provider/appointments_provider.dart';
+import 'package:kaz_med/pages/profile/provider/analysis_provider.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
 import 'package:kaz_med/shared/ui_helper.dart';
 import 'package:kaz_med/widgets/default_text.dart';
 import 'package:kaz_med/widgets/loading_view.dart';
 
-class AppointmentsPage extends StatelessWidget {
-  const AppointmentsPage({Key? key}) : super(key: key);
+class Analysis extends StatelessWidget {
+  const Analysis({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BaseProvider<AppointmentsProvider>(
-      model: AppointmentsProvider(),
+    return BaseProvider<AnalysisProvider>(
+      model: AnalysisProvider(),
       builder: (context, model, child) {
         return model.isLoading
             ? const LoadingView()
@@ -33,7 +33,7 @@ class AppointmentsPage extends StatelessWidget {
                       ),
                     ),
                     title: DefaultText(
-                      text: 'My appointments',
+                      text: 'Analysis',
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
@@ -53,20 +53,20 @@ class AppointmentsPage extends StatelessWidget {
                 ),
                 body: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(20),
+                    horizontal: getProportionateScreenWidth(30),
                     vertical: getProportionateScreenHeight(20),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DefaultText(
-                        text: 'My appointments',
+                        text: 'My analysis:',
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                         isCenter: false,
                       ),
                       UIHelper.verticalSpace(15),
-                      _buildPointers(model.appointments)
+                      _buildPointers(model.analysis, model, context),
                     ],
                   ),
                 ),
@@ -75,7 +75,7 @@ class AppointmentsPage extends StatelessWidget {
     );
   }
 
-  _buildPointers(List<String> list) {
+  _buildPointers(List<String> list, AnalysisProvider provider, context) {
     return Column(
       children: List.generate(
         list.length,
@@ -93,6 +93,10 @@ class AppointmentsPage extends StatelessWidget {
               width: getProportionateScreenWidth(15),
             ),
             Expanded(
+                child: InkWell(
+              onTap: () {
+                provider.toAnalysisDetail(context);
+              },
               child: DefaultText(
                 text: list[index],
                 isCenter: false,
@@ -100,7 +104,7 @@ class AppointmentsPage extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 color: AppColors.greyColor,
               ),
-            ),
+            )),
           ],
         ),
       ),
