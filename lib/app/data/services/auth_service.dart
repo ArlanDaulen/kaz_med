@@ -9,10 +9,12 @@ class AuthService {
   //   );
   // }
 
+  String baseUrl = 'http://7208-46-34-146-223.ngrok.io/';
+
   Future<http.Response> login(String name, String password) {
     return http.post(
       Uri.parse(
-        'https://144a-46-34-146-223.ngrok.io/auth-service/auth',
+        '${baseUrl}auth-service/auth',
       ),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(
@@ -25,7 +27,7 @@ class AuthService {
       String firstName, String lastName, String email, String password) {
     return http.post(
       Uri.parse(
-        'https://144a-46-34-146-223.ngrok.io/auth-service/registration/add-customer',
+        '${baseUrl}auth-service/registration/add-customer',
       ),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(

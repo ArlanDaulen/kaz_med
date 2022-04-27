@@ -18,19 +18,19 @@ class LoginPage extends StatelessWidget {
       onReady: (p0) => p0.init(context),
       model: LoginProvider(),
       builder: (context, model, child) {
-        return model.isLoading
-            ? const LoadingView()
-            : GestureDetector(
-                onTap: () => FocusScope.of(context).unfocus(),
-                child: Scaffold(
-                  resizeToAvoidBottomInset: false,
-                  body: Form(
-                    key: model.formKey,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: getProportionateScreenWidth(22),
-                      ),
-                      child: Column(
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            body: Form(
+              key: model.formKey,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(22),
+                ),
+                child: model.isLoading
+                    ? const LoadingView()
+                    : Column(
                         children: [
                           const Spacer(
                             flex: 1,
@@ -162,10 +162,10 @@ class LoginPage extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                ),
-              );
+              ),
+            ),
+          ),
+        );
       },
     );
   }

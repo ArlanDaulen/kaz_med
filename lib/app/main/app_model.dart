@@ -4,13 +4,11 @@ import 'dart:developer';
 import 'package:connectivity/connectivity.dart';
 // import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:kaz_med/pages/auth/ui/auth_page.dart';
-import 'package:kaz_med/pages/auth/ui/login_page.dart';
-import 'package:kaz_med/pages/auth/ui/signup_page.dart';
-import 'package:kaz_med/pages/home/ui/home_page.dart';
 import 'package:kaz_med/pages/index/ui/index.dart';
 
 import '../../base/base_bloc.dart';
+import '../../pages/auth/ui/auth_page.dart';
+import '../../pages/auth/ui/login_page.dart';
 import 'user_data.dart';
 
 class MyAppModel extends BaseBloc {
@@ -55,9 +53,9 @@ class MyAppModel extends BaseBloc {
     // if (isAuthenticated) {
     //   return HomePage();
     // } else {
-    //   return const LoginPage();
+      return const IndexPage();
     // if (isAuthenticated) {
-    return const IndexPage();
+    // return const IndexPage();
     // } else {
     //   return const AuthPage();
     // }

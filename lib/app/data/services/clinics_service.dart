@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 
 class ClinicsService {
-  String baseUrl = 'https://97a0-176-64-18-134.ngrok.io/';
+  String baseUrl = 'http://7208-46-34-146-223.ngrok.io/';
   final headers = {'Content-Type': 'application/json'};
 
   Future<http.Response> getAllMedCenter() async {

@@ -26,6 +26,7 @@ void main() async {
     //     fallbackLocale: const Locale('en', 'EN'),
     //     child: MyApp(
     //       model: model,
-    //     )),
+    //     ),
+    // ),
   );
 }
