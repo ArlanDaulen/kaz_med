@@ -12,12 +12,13 @@ import '../../../shared/theme.dart';
 import '../../../widgets/default_text.dart';
 
 class ReviewPage extends StatelessWidget {
-  const ReviewPage({Key? key}) : super(key: key);
+  const ReviewPage({Key? key, required this.doctorID}) : super(key: key);
+  final int doctorID;
 
   @override
   Widget build(BuildContext context) {
     return BaseProvider<ReviewProvider>(
-      onReady: (p0) => p0.init(context),
+      onReady: (p0) => p0.init(context, doctorID),
       model: ReviewProvider(),
       builder: (context, model, child) {
         return GestureDetector(
@@ -52,15 +53,7 @@ class ReviewPage extends StatelessWidget {
                   vertical: getProportionateScreenHeight(25)),
               child: DefaultButton(
                 text: 'Send',
-                press: () => showCupertinoDialog(
-                  context: context,
-                  barrierDismissible: true,
-                  builder: (_) => const AlertDialog(
-                    insetPadding:
-                        EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                    content: SuccessMessage(),
-                  ),
-                ),
+                press: () => model.sendReview(context),
               ),
             ),
             body: Padding(
@@ -84,18 +77,24 @@ class ReviewPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
                       5,
-                      (index) => Container(
-                        padding: const EdgeInsets.all(1.5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                            color: Colors.grey,
+                      (index) => GestureDetector(
+                        onTap: () => model.setStarCount(index),
+                        child: Container(
+                          padding: const EdgeInsets.all(1.5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                              color: Colors.grey,
+                            ),
+                            color: AppColors.primaryColor.withOpacity(0),
                           ),
-                        ),
-                        child: SvgPicture.asset(
-                          AppSvgImages.star,
-                          width: getProportionateScreenWidth(30),
-                          color: AppColors.systemBlackColor,
+                          child: SvgPicture.asset(
+                            AppSvgImages.star,
+                            width: getProportionateScreenWidth(30),
+                            color: model.starCount < index
+                                ? AppColors.systemBlackColor
+                                : Colors.yellow,
+                          ),
                         ),
                       ),
                     ),

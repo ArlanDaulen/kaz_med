@@ -1,15 +1,13 @@
 import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/app/data/services/auth_service.dart';
 import 'package:kaz_med/app/main/user_data.dart';
 import 'package:kaz_med/base/base_bloc.dart';
 import 'package:kaz_med/core/freezed/network_error.dart';
 import 'package:kaz_med/core/freezed/result.dart';
-import 'package:kaz_med/pages/home/ui/home_page.dart';
+import 'package:kaz_med/pages/index/ui/index.dart';
 import 'package:kaz_med/shared/size_config.dart';
-import 'package:http/http.dart' as http;
 
 import '../../../app/main/navigator_state.dart';
 import '../../../shared/utils.dart';
@@ -40,7 +38,7 @@ class LoginProvider extends BaseBloc {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (_) => HomePage(),
+              builder: (_) => IndexPage(),
             ),
             (route) => false);
       } else {

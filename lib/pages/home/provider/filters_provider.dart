@@ -14,12 +14,14 @@ class FiltersProvider extends BaseBloc {
   SfRangeValues ratingValues = const SfRangeValues(1.0, 5.0);
   SfRangeValues priceValues = const SfRangeValues(2000.0, 20000.0);
   SfRangeValues experienceValues = const SfRangeValues(1.0, 10.0);
+  TextEditingController controller = TextEditingController();
   HomeProvider? model;
 
   init(BuildContext context, HomeProvider _model) {
     setLoading(true);
     SizeConfig().init(context);
     model = _model;
+    controller.text = '12:30';
     setLoading(false);
   }
 
@@ -54,7 +56,7 @@ class FiltersProvider extends BaseBloc {
         priceValues.end.toInt().toString(),
         experienceValues.start.toInt().toString(),
         experienceValues.end.toInt().toString(),
-        '12:30',
+        controller.text,
       ),
     );
   }

@@ -106,9 +106,15 @@ class HomePage extends StatelessWidget {
                               fontSize: getProportionateScreenHeight(14),
                             ),
                           ),
-                          suffixIcon: const Icon(
-                            CupertinoIcons.search,
-                            color: AppColors.primaryColor,
+                          suffixIcon: GestureDetector(
+                            onTap: () async {
+                              FocusScope.of(context).unfocus();
+                              await model.searchDoctorByName();
+                            },
+                            child: const Icon(
+                              CupertinoIcons.search,
+                              color: AppColors.primaryColor,
+                            ),
                           ),
                         ),
                       ),

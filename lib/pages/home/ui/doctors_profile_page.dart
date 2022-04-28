@@ -14,7 +14,10 @@ import 'package:kaz_med/widgets/default_text.dart';
 
 class DoctorsProfilePage extends StatelessWidget {
   DoctorsProfilePage(
-      {Key? key, required this.image, required this.homeProvider, required this.index})
+      {Key? key,
+      required this.image,
+      required this.homeProvider,
+      required this.index})
       : super(key: key);
   final String image;
   final HomeProvider homeProvider;
@@ -224,7 +227,9 @@ class DoctorsProfilePage extends StatelessWidget {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const ReviewPage(),
+                    builder: (_) => ReviewPage(
+                      doctorID: homeProvider.doctors!.data![index].doctorId!,
+                    ),
                   ),
                 ),
                 child: Container(

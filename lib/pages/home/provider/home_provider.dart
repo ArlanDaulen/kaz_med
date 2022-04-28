@@ -82,7 +82,9 @@ class HomeProvider extends BaseBloc {
     if (response.statusCode == 200) {
       log('Searched Succefully');
       doctors = json.decode(response.body).isNotEmpty
-          ? DoctorModel.fromJson(json.decode(response.body)[0])
+          ? DoctorModel.fromJson(
+              {'data': json.decode(response.body)},
+            )
           : doctors;
       notifyListeners();
     }

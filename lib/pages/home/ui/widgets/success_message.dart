@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kaz_med/pages/home/ui/doctors_profile_page.dart';
+import 'package:kaz_med/pages/home/ui/home_page.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
 import 'package:kaz_med/widgets/default_text.dart';
@@ -42,7 +44,10 @@ class SuccessMessage extends StatelessWidget {
             flex: 6,
           ),
           GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () async {
+              int count = 0;
+              Navigator.of(context).popUntil((_) => count++ >= 2);
+            },
             child: Container(
               color: Colors.green,
               alignment: Alignment.center,
