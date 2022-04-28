@@ -133,6 +133,7 @@ class SpecialtyPage extends StatelessWidget {
                 child: InkWell(
               onTap: () {
                 // provider.toAnalysisDetail(context);
+               
               },
               child: DefaultText(
                 text: model.specialityModel!.data![index].specialtyName!,
