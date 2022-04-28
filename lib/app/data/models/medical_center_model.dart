@@ -13,7 +13,7 @@ class MedicalCenterModel {
   String? username;
   String? latitude;
   String? longitude;
-  String? distance; // ?
+  num? distance; // ?
   num? rating;
   int? peopleCount;
   String? about; // ?
@@ -113,7 +113,7 @@ class Doctors {
   String? address;
   String? latitude;
   String? longitude;
-  String? distance; // ?
+  num? distance; // ?
   num? rating;
   int? peopleCount;
   String? about; // ?

@@ -16,33 +16,18 @@ void main() async {
   await model.init();
 
   runApp(
-<<<<<<< HEAD
-    MyApp(model: model),
-    // EasyLocalization(
-    //     supportedLocales: const [
-    //       Locale('en', 'EN'),
-    //       Locale('ru', 'RU'),
-    //       Locale('kk', 'KK'),
-    //     ],
-    //     path: 'assets/lang', // <-- change the path of the translation files
-    //     fallbackLocale: const Locale('en', 'EN'),
-    //     child: MyApp(
-    //       model: model,
-    //     ),
-    // ),
-=======
     // MyApp(model: model),
     EasyLocalization(
-        supportedLocales: const [
-          Locale('en', 'EN'),
-          Locale('ru', 'RU'),
-          Locale('kk', 'KK'),
-        ],
-        path: 'assets/lang', // <-- change the path of the translation files
-        fallbackLocale: const Locale('en', 'EN'),
-        child: MyApp(
-          model: model,
-        )),
->>>>>>> 251acd1fac5204d32f5e8331922bcc205e64a8c9
+      supportedLocales: const [
+        Locale('en', 'EN'),
+        Locale('ru', 'RU'),
+        Locale('kk', 'KK'),
+      ],
+      path: 'assets/lang', // <-- change the path of the translation files
+      fallbackLocale: const Locale('en', 'EN'),
+      child: MyApp(
+        model: model,
+      ),
+    ),
   );
 }

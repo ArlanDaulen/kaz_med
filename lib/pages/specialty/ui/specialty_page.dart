@@ -16,78 +16,79 @@ class SpecialtyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseProvider<SpecialtyProvider>(
+      onReady: (p0) => p0.init(context),
       model: SpecialtyProvider(),
       builder: (context, model, child) {
-        return model.isLoading
-            ? const LoadingView()
-            : Scaffold(
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(
-                    getProportionateScreenHeight(120),
+        return Scaffold(
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(
+              getProportionateScreenHeight(120),
+            ),
+            child: AppBar(
+              title: DefaultText(
+                text: 'Specialties',
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
+              centerTitle: true,
+              backgroundColor: AppColors.defaultBackgroundColor,
+              elevation: 0,
+              bottom: PreferredSize(
+                preferredSize: Size.fromHeight(
+                  getProportionateScreenHeight(70),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(10),
                   ),
-                  child: AppBar(
-                    title: DefaultText(
-                      text: 'Specialties',
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    centerTitle: true,
-                    backgroundColor: AppColors.defaultBackgroundColor,
-                    elevation: 0,
-                    bottom: PreferredSize(
-                      preferredSize: Size.fromHeight(
-                        getProportionateScreenHeight(70),
+                  child: ListTile(
+                    title: TextFormField(
+                      controller: model.searchController,
+                      cursorColor: AppColors.systemBlackColor,
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          color: AppColors.systemBlackColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: getProportionateScreenHeight(14),
+                        ),
                       ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(
+                          vertical: 0,
                           horizontal: getProportionateScreenWidth(10),
                         ),
-                        child: ListTile(
-                          title: TextFormField(
-                            controller: model.searchController,
-                            cursorColor: AppColors.systemBlackColor,
-                            style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                color: AppColors.systemBlackColor,
-                                fontWeight: FontWeight.w500,
-                                fontSize: getProportionateScreenHeight(14),
-                              ),
-                            ),
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.symmetric(
-                                vertical: 0,
-                                horizontal: getProportionateScreenWidth(10),
-                              ),
-                              focusedBorder: const OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: AppColors.greyColor,
-                                ),
-                              ),
-                              border: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                  color: AppColors.greyColor,
-                                ),
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              hintText: 'Cardiologist',
-                              hintStyle: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: getProportionateScreenHeight(14),
-                                ),
-                              ),
-                              suffixIcon: const Icon(
-                                CupertinoIcons.search,
-                                color: AppColors.primaryColor,
-                              ),
-                            ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColors.greyColor,
                           ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: AppColors.greyColor,
+                          ),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        hintText: 'Speciality',
+                        hintStyle: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: getProportionateScreenHeight(14),
+                          ),
+                        ),
+                        suffixIcon: const Icon(
+                          CupertinoIcons.search,
+                          color: AppColors.primaryColor,
                         ),
                       ),
                     ),
                   ),
                 ),
-                body: Padding(
+              ),
+            ),
+          ),
+          body: model.isLoading
+              ? const LoadingView()
+              : Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(30),
                     vertical: getProportionateScreenHeight(20),
@@ -102,19 +103,19 @@ class SpecialtyPage extends StatelessWidget {
                         isCenter: false,
                       ),
                       UIHelper.verticalSpace(15),
-                      _buildPointers(model.specialties),
+                      _buildPointers(model),
                     ],
                   ),
                 ),
-              );
+        );
       },
     );
   }
 
-  _buildPointers(List<String> list) {
+  _buildPointers(SpecialtyProvider model) {
     return Column(
       children: List.generate(
-        list.length,
+        model.specialityModel!.data!.length,
         (index) => Row(
           children: [
             Container(
@@ -134,7 +135,7 @@ class SpecialtyPage extends StatelessWidget {
                 // provider.toAnalysisDetail(context);
               },
               child: DefaultText(
-                text: list[index],
+                text: model.specialityModel!.data![index].specialtyName!,
                 isCenter: false,
                 fontSize: 14,
                 fontWeight: FontWeight.w500,

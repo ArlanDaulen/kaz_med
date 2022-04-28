@@ -1,9 +1,10 @@
-import 'dart:convert';
-
 import 'package:http/http.dart' as http;
+import 'package:kaz_med/app/main/user_data.dart';
 
 class HomeService {
-  String baseUrl = 'http://7208-46-34-146-223.ngrok.io/';
+  UserData _userData = UserData();
+  final String baseUrl = 'https://ff52-46-34-146-223.ngrok.io/';
+
   final headers = {'Content-Type': 'application/json'};
 
   Future<http.Response> getAllDoctors() {
@@ -16,25 +17,30 @@ class HomeService {
   }
 
   // 500 wtf?
-  Future<http.Response> filterWithTERFD(
-      String distanceStart,
-      String distanceEnd,
-      String ratingStart,
-      String ratingEnd,
-      String feesStart,
-      String feesEnd,
-      String experienceStart,
-      String experienceEnd,
+  Future<http.Response> filterWithLDRPET(
+      String lat,
+      String lon,
+      String distanceFrom,
+      String distanceTo,
+      String ratingFrom,
+      String ratingTo,
+      String priceFrom,
+      String priceTo,
+      String experienceFrom,
+      String experienceTo,
       String time) {
     return http.get(
       Uri.parse(
-        '${baseUrl}med-service/doctor/public/filter/100/1000/3/5/1000/10000/8/20/12:30',
+        '${baseUrl}med-service/doctor/public/filter/$lat/$lon/$distanceFrom/$distanceTo/$ratingFrom/$ratingTo/$priceFrom/$priceTo/$experienceFrom/$experienceTo/$time',
       ),
-      headers: headers,
+      headers: {
+        'Authorization': "Bearer ${_userData.getToken()}",
+        'Content-Type': 'application/json'
+      },
     );
   }
 
-   Future<http.Response> searchDoctorByName(String name) {
+  Future<http.Response> searchDoctorByName(String name) {
     return http.get(
       Uri.parse(
         '${baseUrl}med-service/doctor/public/search/$name',

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/home/provider/filters_provider.dart';
+import 'package:kaz_med/pages/home/provider/home_provider.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
 import 'package:kaz_med/widgets/default_button.dart';
@@ -13,12 +14,16 @@ import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
 class FiltersPage extends StatelessWidget {
-  const FiltersPage({Key? key}) : super(key: key);
+  const FiltersPage({Key? key, required this.homeProvider}) : super(key: key);
+  final HomeProvider homeProvider;
 
   @override
   Widget build(BuildContext context) {
     return BaseProvider<FiltersProvider>(
-      onReady: (p0) => p0.init(context),
+      onReady: (p0) => p0.init(
+        context,
+        homeProvider,
+      ),
       model: FiltersProvider(),
       builder: (context, model, child) {
         return Scaffold(
@@ -68,7 +73,7 @@ class FiltersPage extends StatelessWidget {
                   child: DefaultButton(
                     text: 'Apply',
                     // color: AppColors.whiteColor,
-                    press: () {},
+                    press: () async => await model.searchWithLDRPET(context),
                   ),
                 ),
               ],

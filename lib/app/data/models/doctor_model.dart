@@ -1,4 +1,27 @@
 class DoctorModel {
+  List<Data>? data;
+
+  DoctorModel({this.data});
+
+  DoctorModel.fromJson(Map<String, dynamic> json) {
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(new Data.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Data {
   int? doctorId;
   String? doctorName;
   String? doctorSurname;
@@ -8,21 +31,21 @@ class DoctorModel {
   String? workTimeTo;
   String? password;
   bool? status;
-  String? activationCode; // int?
+  String? activationCode;
   String? username;
   String? address;
   String? latitude;
   String? longitude;
-  int? distance; // double?
+  num? distance;
   num? rating;
   int? peopleCount;
-  String? about; // ?
-  String? qualifications; // ?
+  String? about;
+  String? qualifications;
   int? experience;
   int? fees;
   List<Specialties>? specialties;
 
-  DoctorModel(
+  Data(
       {this.doctorId,
       this.doctorName,
       this.doctorSurname,
@@ -46,7 +69,7 @@ class DoctorModel {
       this.fees,
       this.specialties});
 
-  DoctorModel.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     doctorId = json['doctorId'];
     doctorName = json['doctorName'];
     doctorSurname = json['doctorSurname'];

@@ -34,6 +34,10 @@ class HomePage extends StatelessWidget {
     AppPngImages.doctor_2,
     AppPngImages.doctor_3,
     AppPngImages.doctor_4,
+    AppPngImages.doctor_1,
+    AppPngImages.doctor_2,
+    AppPngImages.doctor_3,
+    AppPngImages.doctor_4,
   ];
 
   @override
@@ -112,7 +116,9 @@ class HomePage extends StatelessWidget {
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => FiltersPage(),
+                            builder: (_) => FiltersPage(
+                              homeProvider: model,
+                            ),
                           ),
                         ),
                         child: Container(
@@ -217,7 +223,7 @@ class HomePage extends StatelessWidget {
                                   ),
                                   shrinkWrap: true,
                                   physics: const BouncingScrollPhysics(),
-                                  itemCount: 1,
+                                  itemCount: model.doctors!.data!.length,
                                   separatorBuilder: (_, index) => SizedBox(
                                     height: getProportionateScreenHeight(28),
                                   ),
@@ -228,12 +234,14 @@ class HomePage extends StatelessWidget {
                                         builder: (_) => DoctorsProfilePage(
                                           image: doctors[index],
                                           homeProvider: model,
+                                          index: index,
                                         ),
                                       ),
                                     ),
                                     child: DoctorsContainer(
                                       image: doctors[index],
                                       model: model,
+                                      index: index,
                                     ),
                                   ),
                                 ),

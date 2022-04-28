@@ -45,6 +45,7 @@ class LoginProvider extends BaseBloc {
             (route) => false);
       } else {
         log(response.statusCode.toString());
+        setLoading(false);
         return showDialogCustom(
           context: GlobalVariable.navState.currentContext!,
           barrierDismissible: true,
@@ -62,6 +63,7 @@ class LoginProvider extends BaseBloc {
         );
       }
     } catch (e) {
+      setLoading(false);
       return showDialogCustom(
         context: GlobalVariable.navState.currentContext!,
         barrierDismissible: true,
@@ -78,21 +80,6 @@ class LoginProvider extends BaseBloc {
         ),
       );
     }
-    // loginData =
-    //     await _authService.login(emailController.text, passwordController.text);
-    // loginData!.when(
-    //   success: (data) {
-    //     log(data.)
-    //     Navigator.pushAndRemoveUntil(
-    //         context,
-    //         MaterialPageRoute(
-    //           builder: (_) => HomePage(),
-    //         ),
-    //         (route) => false);
-
-    //   },
-    //   failure: (fail) => log('BLYA'),
-    // );
-    setLoading(false);
+    notifyListeners();
   }
 }

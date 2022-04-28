@@ -14,10 +14,11 @@ import 'package:kaz_med/widgets/default_text.dart';
 
 class DoctorsProfilePage extends StatelessWidget {
   DoctorsProfilePage(
-      {Key? key, required this.image, required this.homeProvider})
+      {Key? key, required this.image, required this.homeProvider, required this.index})
       : super(key: key);
   final String image;
   final HomeProvider homeProvider;
+  final int index;
 
   List<String> qualifiactions = [
     'Bachelor of Medicine, Bachelor of Surgery (MBBS), 1989',
@@ -88,6 +89,7 @@ class DoctorsProfilePage extends StatelessWidget {
                   DoctorsContainer(
                     image: image,
                     model: homeProvider,
+                    index: index,
                   ),
                   SizedBox(
                     height: getProportionateScreenHeight(17),
@@ -101,8 +103,8 @@ class DoctorsProfilePage extends StatelessWidget {
                     height: getProportionateScreenHeight(10),
                   ),
                   DefaultText(
-                    text: homeProvider.doctors!.about != null
-                        ? homeProvider.doctors!.about.toString()
+                    text: homeProvider.doctors!.data![index].about != null
+                        ? homeProvider.doctors!.data![index].about.toString()
                         : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
                     isCenter: false,
                     fontSize: 12,
@@ -118,9 +120,10 @@ class DoctorsProfilePage extends StatelessWidget {
                   SizedBox(
                     height: getProportionateScreenHeight(10),
                   ),
-                  _buildPointers(homeProvider.doctors!.qualifications != null
-                      ? [homeProvider.doctors!.qualifications!]
-                      : qualifiactions),
+                  _buildPointers(
+                      homeProvider.doctors!.data![index].qualifications != null
+                          ? [homeProvider.doctors!.data![index].qualifications!]
+                          : qualifiactions),
                   _divider(),
                   DefaultText(
                     text: 'Services',
@@ -187,9 +190,13 @@ class DoctorsProfilePage extends StatelessWidget {
                     height: getProportionateScreenHeight(10),
                   ),
                   model.feesTapped
-                      ? _buildPointers(homeProvider.doctors!.fees != null
-                          ? [homeProvider.doctors!.fees!.toString()]
-                          : fees)
+                      ? _buildPointers(
+                          homeProvider.doctors!.data![index].fees != null
+                              ? [
+                                  homeProvider.doctors!.data![index].fees!
+                                      .toString()
+                                ]
+                              : fees)
                       : const SizedBox(),
                   SizedBox(
                     height: getProportionateScreenHeight(96),

@@ -54,11 +54,11 @@ class MyAppModel extends BaseBloc {
     // if (isAuthenticated) {
     //   return HomePage();
     // } else {
-      return const IndexPage();
-    // if (isAuthenticated) {
-    // return const IndexPage();
-    // } else {
-    //   return const AuthPage();
-    // }
+      // return const IndexPage();
+    if (isAuthenticated) {
+    return const IndexPage();
+    } else {
+      return const AuthPage();
+    }
   }
 }

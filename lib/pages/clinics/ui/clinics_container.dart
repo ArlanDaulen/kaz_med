@@ -94,25 +94,39 @@ class ClinicsContainer extends StatelessWidget {
                     SizedBox(
                       width: getProportionateScreenWidth(15),
                     ),
-                    Row(
-                      children: [
-                        const Icon(
-                          CupertinoIcons.location,
-                          color: AppColors.greyColor,
-                          size: 12,
-                        ),
-                        SizedBox(
-                          width: getProportionateScreenWidth(10),
-                        ),
-                        DefaultText(
-                          text: clinicsProvider.medCenters!.distance != null
-                              ? clinicsProvider.medCenters!.distance!
-                              : 'empty',
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.greyColor,
-                        )
-                      ],
+                    Expanded(
+                      child: Row(
+                        children: [
+                          const Icon(
+                            CupertinoIcons.location,
+                            color: AppColors.greyColor,
+                            size: 12,
+                          ),
+                          SizedBox(
+                            width: getProportionateScreenWidth(10),
+                          ),
+                          Expanded(
+                            child: Row(
+                              children: [
+                                Flexible(
+                                  child: DefaultText(
+                                    isCenter: false,
+                                    text: clinicsProvider
+                                                .medCenters!.distance !=
+                                            null
+                                        ? clinicsProvider.medCenters!.distance!
+                                            .toString()
+                                        : 'empty',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.greyColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ],
                 ),

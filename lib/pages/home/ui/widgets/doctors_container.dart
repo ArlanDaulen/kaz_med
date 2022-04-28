@@ -8,10 +8,12 @@ import '../../../../shared/theme.dart';
 import '../../../../widgets/default_text.dart';
 
 class DoctorsContainer extends StatelessWidget {
-  const DoctorsContainer({Key? key, required this.image, required this.model})
+  const DoctorsContainer(
+      {Key? key, required this.image, required this.model, required this.index})
       : super(key: key);
   final HomeProvider model;
   final String image;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +49,8 @@ class DoctorsContainer extends StatelessWidget {
                     children: [
                       DefaultText(
                         isCenter: false,
-                        text: model.doctors!.doctorName! +
-                            ' ${model.doctors!.doctorSurname!.substring(0, 1)}.',
+                        text: model.doctors!.data![index].doctorName! +
+                            ' ${model.doctors!.data![index].doctorSurname!.substring(0, 1)}.',
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
@@ -60,8 +62,12 @@ class DoctorsContainer extends StatelessWidget {
                           Flexible(
                             child: DefaultText(
                               isCenter: false,
-                              text: model
-                                  .doctors!.specialties!.first.specialtyName!,
+                              text: model.doctors!.data![index].specialties!
+                                          .length ==
+                                      0
+                                  ? 'Default speciality'
+                                  : model.doctors!.data![index].specialties!
+                                      .first.specialtyName!,
                               isOverFlow: true,
                               fontWeight: FontWeight.w500,
                               color: AppColors.greyColor,
@@ -83,8 +89,9 @@ class DoctorsContainer extends StatelessWidget {
                             width: getProportionateScreenWidth(10),
                           ),
                           DefaultText(
-                            text: model.doctors!.distance != null
-                                ? model.doctors!.distance!.toString()
+                            text: model.doctors!.data![index].distance != null
+                                ? model.doctors!.data![index].distance!
+                                    .toString()
                                 : 'empty',
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
@@ -116,7 +123,8 @@ class DoctorsContainer extends StatelessWidget {
                               width: getProportionateScreenWidth(5),
                             ),
                             DefaultText(
-                              text: model.doctors!.rating!.toString(),
+                              text: model.doctors!.data![index].rating!
+                                  .toString(),
                               fontSize: 10,
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryColor,
