@@ -6,6 +6,7 @@ import 'package:kaz_med/pages/profile/provider/about_provider.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
 import 'package:kaz_med/shared/ui_helper.dart';
+import 'package:kaz_med/widgets/default_button.dart';
 import 'package:kaz_med/widgets/default_text.dart';
 import 'package:kaz_med/widgets/loading_view.dart';
 
@@ -15,49 +16,52 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseProvider<AboutProvider>(
-        model: AboutProvider(),
-        builder: (context, model, child) {
-          return model.isLoading
-              ? const LoadingView()
-              : Scaffold(
-                  appBar: PreferredSize(
-                    preferredSize: Size.fromHeight(
-                      getProportionateScreenHeight(70),
+      model: AboutProvider(),
+      onReady: (_) => _.init(context),
+      builder: (context, model, child) {
+        return model.isLoading
+            ? const LoadingView()
+            : Scaffold(
+                appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(
+                    getProportionateScreenHeight(70),
+                  ),
+                  child: AppBar(
+                    automaticallyImplyLeading: false,
+                    leading: IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(
+                        Icons.arrow_back_ios,
+                        color: AppColors.systemBlackColor,
+                      ),
                     ),
-                    child: AppBar(
-                      automaticallyImplyLeading: false,
-                      leading: IconButton(
-                        onPressed: () => Navigator.pop(context),
+                    title: DefaultText(
+                      text: 'About me',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    centerTitle: true,
+                    backgroundColor: AppColors.defaultBackgroundColor,
+                    elevation: 0,
+                    actions: [
+                      IconButton(
+                        onPressed: () {},
                         icon: const Icon(
-                          Icons.arrow_back_ios,
+                          CupertinoIcons.ellipsis_vertical,
                           color: AppColors.systemBlackColor,
                         ),
-                      ),
-                      title: DefaultText(
-                        text: 'About me',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      centerTitle: true,
-                      backgroundColor: AppColors.defaultBackgroundColor,
-                      elevation: 0,
-                      actions: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            CupertinoIcons.ellipsis_vertical,
-                            color: AppColors.systemBlackColor,
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
-                  body: Padding(
+                ),
+                body: SingleChildScrollView(
+                  child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: getProportionateScreenWidth(20),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
                           padding: EdgeInsets.symmetric(
@@ -90,120 +94,94 @@ class AboutPage extends StatelessWidget {
                           ),
                         ),
                         UIHelper.verticalSpace(20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                DefaultText(
-                                  text: 'Name',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                DefaultText(
-                                  text: 'Aidana',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.greyColor,
-                                ),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                DefaultText(
-                                  text: 'Day of birthday',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                DefaultText(
-                                  text: '12.01.2000',
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.greyColor,
-                                ),
-                              ],
-                            ),
-                          ],
+                        _buildController(model.nameController, 'Name'),
+                        UIHelper.verticalSpace(
+                          getProportionateScreenHeight(10),
                         ),
-                        UIHelper.verticalSpace(10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            DefaultText(
-                              text: 'Day of birthday',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            DefaultText(
-                              text: '12.01.2000',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.greyColor,
-                            ),
-                          ],
+                        _buildController(model.surnameController, 'Surname'),
+                        UIHelper.verticalSpace(
+                          getProportionateScreenHeight(10),
                         ),
-                        UIHelper.verticalSpace(10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                DefaultText(
-                                  text: 'Email',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                DefaultText(
-                                  text: 'example@gmail.com',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.greyColor,
-                                ),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                DefaultText(
-                                  text: 'Phone number',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                DefaultText(
-                                  text: '+7-777-777-77-77',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.greyColor,
-                                ),
-                              ],
-                            ),
-                          ],
+                        _buildController(model.emailController, 'Email'),
+                        UIHelper.verticalSpace(
+                          getProportionateScreenHeight(10),
                         ),
-                        UIHelper.verticalSpace(10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            DefaultText(
-                              text: 'Place of living',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            DefaultText(
-                              text: 'c. Almaty, st. Abay 56',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.greyColor,
-                            ),
-                          ],
+                        _buildController(
+                            model.birthController, 'Day of birthday'),
+                        UIHelper.verticalSpace(
+                          getProportionateScreenHeight(10),
                         ),
-                        UIHelper.verticalSpace(10),
+                        _buildController(model.phoneController, 'Phone number'),
+                        UIHelper.verticalSpace(
+                          getProportionateScreenHeight(10),
+                        ),
+                        _buildController(
+                            model.addressController, 'Place of living'),
+                        UIHelper.verticalSpace(
+                          getProportionateScreenHeight(20),
+                        ),
+                        DefaultButton(
+                          press: () {
+                            Navigator.pop(context);
+                          },
+                          text: 'Сохранить',
+                          color: AppColors.primaryColor,
+                        ),
+                        UIHelper.verticalSpace(
+                          getProportionateScreenHeight(20),
+                        ),
                       ],
                     ),
                   ),
-                );
-        });
+                ),
+              );
+      },
+    );
+  }
+
+  Widget _buildController(
+    TextEditingController controller,
+    String title,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        DefaultText(
+          text: title,
+          fontWeight: FontWeight.w500,
+          fontSize: 16,
+        ),
+        SizedBox(
+          height: getProportionateScreenHeight(5),
+        ),
+        Flexible(
+          child: TextField(
+            controller: controller,
+            cursorColor: AppColors.systemBlackColor,
+            style: TextStyle(
+              color: AppColors.greyColor,
+              fontSize: getProportionateScreenHeight(16),
+              fontWeight: FontWeight.w400,
+            ),
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(8),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: AppColors.greyColor),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: AppColors.greyColor),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              fillColor: AppColors.defaultBackgroundColor,
+              filled: true,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
