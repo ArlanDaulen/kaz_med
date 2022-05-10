@@ -83,7 +83,7 @@ class ClinicsFilters extends StatelessWidget {
                           shouldAlwaysShowTooltip: true,
                           inactiveColor: AppColors.greyColor,
                           activeColor: AppColors.primaryColor,
-                          tooltipShape: SfPaddleTooltipShape(),
+                          tooltipShape: const SfPaddleTooltipShape(),
                           values: model.distanceValues,
                           onChanged: (newValues) =>
                               model.setDistanceValues(newValues),
@@ -133,7 +133,7 @@ class ClinicsFilters extends StatelessWidget {
                           inactiveColor: AppColors.greyColor,
                           activeColor: AppColors.primaryColor,
                           values: model.priceValues,
-                          tooltipShape: SfPaddleTooltipShape(),
+                          tooltipShape: const SfPaddleTooltipShape(),
                           onChanged: (newValues) =>
                               model.setPriceValues(newValues),
                         ),
@@ -148,13 +148,13 @@ class ClinicsFilters extends StatelessWidget {
                           alignment: Alignment.center,
                           child: Column(
                             children: [
-                              Spacer(),
+                              const Spacer(),
                               DefaultText(
                                 text: 'time',
                                 fontWeight: FontWeight.w600,
                                 fontSize: 15,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Expanded(
                                 flex: 2,
                                 child: Container(
