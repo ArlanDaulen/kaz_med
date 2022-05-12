@@ -12,19 +12,10 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
   const PlaceholderClient._() : super();
   const factory PlaceholderClient.login(String name, String password) = _Login;
   const factory PlaceholderClient.getAllDoctors() = _GetAllDoctors;
+  const factory PlaceholderClient.getUser(String username) = _GetUser;
 
   @override
-  String get baseURL => 'http://97a0-176-64-18-134.ngrok.io/';
-
-  @override
-  dynamic get body {
-    return this.maybeWhen(
-        orElse: () {
-          return null;
-        },
-        login: (String name, String password) =>
-            {"username": name, "password": password});
-  }
+  String get baseURL => 'https://fd6a-2-72-83-88.ngrok.io/';
 
   @override
   Future<Map<String, dynamic>> get header async {
@@ -32,6 +23,15 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
       'Content-Type': 'application/json',
       "authorization": "Bearer " + await _userData.getToken(),
     };
+  }
+
+  @override
+  String get path {
+    return this.when<String>(
+      login: (String name, String password) => 'auth-service/auth',
+      getAllDoctors: () => 'med-service/doctor/public/all',
+      getUser: (String username) => 'client-service/customer/private/find/$username',
+    );
   }
 
   @override
@@ -43,11 +43,13 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
   }
 
   @override
-  String get path {
-    return this.when<String>(
-      login: (String name, String password) => 'auth-service/auth',
-      getAllDoctors: () => 'med-service/doctor/public/all',
-    );
+  dynamic get body {
+    return this.maybeWhen(
+        orElse: () {
+          return null;
+        },
+        login: (String name, String password) =>
+            {"username": name, "password": password});
   }
 
   @override
