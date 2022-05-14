@@ -15,28 +15,32 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
   const factory PlaceholderClient.getUser(String username) = _GetUser;
 
   @override
-  String get baseURL => 'https://fd6a-2-72-83-88.ngrok.io/';
+  String get baseURL => 'https://cace-176-64-11-229.eu.ngrok.io/';
 
   @override
   Future<Map<String, dynamic>> get header async {
     return {
       'Content-Type': 'application/json',
-      "authorization": "Bearer " + await _userData.getToken(),
+      "Authorization":
+          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3lsemhhbm5AZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwiaWF0IjoxNjUyMzYyMzE3LCJleHAiOjE2NTIzNjU5MTd9.00Y4UbNJ0eLL2cbBMnppT6TwdoHIAqSoNGkzXeiAS1SMnVX4cDsMG13abIe-ZiETECbVAwjs2N5RWdMSfnvFJA",
+      // "Authorization":
+      //     "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3lsemhhbkBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJBRE1JTiJdLCJpYXQiOjE2NTIzNjEzMDQsImV4cCI6MTY1MjM2NDkwNH0.UPLyIPcFfz7VUU9dziOwLUz7El6Q_vlBC49GZVx_xwVlJGekiTp4CyenXCOydcX_IuN_Y3Kj233ZxupawiPIww",
     };
   }
 
   @override
   String get path {
-    return this.when<String>(
+    return when<String>(
       login: (String name, String password) => 'auth-service/auth',
       getAllDoctors: () => 'med-service/doctor/public/all',
-      getUser: (String username) => 'client-service/customer/private/find/$username',
+      getUser: (String username) =>
+          'client-service/customer/private/find/$username',
     );
   }
 
   @override
   String get method {
-    return this.maybeWhen<String>(
+    return maybeWhen<String>(
       orElse: () => 'GET',
       login: (String name, String password) => 'POST',
     );
@@ -44,7 +48,7 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
 
   @override
   dynamic get body {
-    return this.maybeWhen(
+    return maybeWhen(
         orElse: () {
           return null;
         },
@@ -54,7 +58,7 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
 
   @override
   Map<String, dynamic>? get queryParameters {
-    return this.maybeWhen(
+    return maybeWhen(
       orElse: () => null,
     );
   }

@@ -17,7 +17,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseProvider<ProfileProvider>(
       model: ProfileProvider(),
-      onReady: (_) => _.init(context),
+      onReady: (_) async => await _.init(context),
       builder: (context, model, child) {
         return model.isLoading
             ? const LoadingView()
@@ -34,19 +34,21 @@ class Profile extends StatelessWidget {
                         children: [
                           SvgPicture.asset(AppSvgImages.ic_user),
                           UIHelper.verticalSpace(20),
-                          const Text(
-                            'Kenes Aidana',
-                            style: TextStyle(
+                          Text(
+                            // 'Kenes Aidana',
+                            '${model.profileModel!.customerName!} ${model.profileModel!.customerSurname!}',
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           UIHelper.verticalSpace(
                               getProportionateScreenHeight(12)),
-                          const Text(
-                            'Almaty, Kazakhstan',
+                          Text(
+                            // 'Almaty, Kazakhstan',
+                            model.profileModel!.address!,
                             textAlign: TextAlign.start,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
