@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:kaz_med/app/main/user_data.dart';
 import 'package:kaz_med/core/network/interfaces/base_client_generator.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,14 +17,15 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
   const factory PlaceholderClient.getUser(String username) = _GetUser;
 
   @override
-  String get baseURL => 'https://cace-176-64-11-229.eu.ngrok.io/';
+  String get baseURL => 'https://1afe-176-64-7-180.eu.ngrok.io/';
 
   @override
   Future<Map<String, dynamic>> get header async {
+    final token = await _userData.getToken();
+    log('TOKEN: ' + token);
     return {
       'Content-Type': 'application/json',
-      "Authorization":
-          "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3lsemhhbm5AZ21haWwuY29tIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwiaWF0IjoxNjUyMzYyMzE3LCJleHAiOjE2NTIzNjU5MTd9.00Y4UbNJ0eLL2cbBMnppT6TwdoHIAqSoNGkzXeiAS1SMnVX4cDsMG13abIe-ZiETECbVAwjs2N5RWdMSfnvFJA",
+      "Authorization": "Bearer " + token,
       // "Authorization":
       //     "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3lsemhhbkBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJBRE1JTiJdLCJpYXQiOjE2NTIzNjEzMDQsImV4cCI6MTY1MjM2NDkwNH0.UPLyIPcFfz7VUU9dziOwLUz7El6Q_vlBC49GZVx_xwVlJGekiTp4CyenXCOydcX_IuN_Y3Kj233ZxupawiPIww",
     };
@@ -34,7 +37,7 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
       login: (String name, String password) => 'auth-service/auth',
       getAllDoctors: () => 'med-service/doctor/public/all',
       getUser: (String username) =>
-          'client-service/customer/private/find/$username',
+          'auth-service/customer/private/find/$username',
     );
   }
 
