@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_provider.dart';
@@ -35,7 +36,7 @@ class AnalysisDetail extends StatelessWidget {
                       ),
                     ),
                     title: DefaultText(
-                      text: 'Analysis',
+                      text: 'analysis'.tr(),
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
@@ -61,7 +62,7 @@ class AnalysisDetail extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      DefaultText(text: 'Analysis'),
+                      DefaultText(text: 'analysis'.tr()),
                       UIHelper.verticalSpace(15),
                       Container(
                         width: getProportionateScreenWidth(375),
@@ -83,7 +84,7 @@ class AnalysisDetail extends StatelessWidget {
                         ),
                       ),
                       UIHelper.verticalSpace(15),
-                      DefaultText(text: 'Description'),
+                      DefaultText(text: 'description'.tr()),
                       UIHelper.verticalSpace(15),
                       Container(
                         width: getProportionateScreenWidth(375),
@@ -115,7 +116,7 @@ class AnalysisDetail extends StatelessWidget {
                   ),
                   child: Expanded(
                     child: DefaultButton(
-                      text: 'Back',
+                      text: 'back'.tr(),
                       textColor: AppColors.whiteColor,
                       press: () => Navigator.pop(context),
                     ),

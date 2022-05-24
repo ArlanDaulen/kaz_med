@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +27,7 @@ class SpecialtyPage extends StatelessWidget {
             ),
             child: AppBar(
               title: DefaultText(
-                text: 'Specialties',
+                text: 'specialties'.tr(),
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
               ),
@@ -68,7 +69,7 @@ class SpecialtyPage extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(4),
                         ),
-                        hintText: 'Speciality',
+                        hintText: 'speciality'.tr(),
                         hintStyle: GoogleFonts.poppins(
                           textStyle: TextStyle(
                             fontWeight: FontWeight.w500,
@@ -97,7 +98,7 @@ class SpecialtyPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DefaultText(
-                        text: 'List of specialties:',
+                        text: 'listOfSpecialties'.tr(),
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                         isCenter: false,
@@ -133,7 +134,6 @@ class SpecialtyPage extends StatelessWidget {
                 child: InkWell(
               onTap: () {
                 // provider.toAnalysisDetail(context);
-               
               },
               child: DefaultText(
                 text: model.specialityModel!.data![index].specialtyName!,

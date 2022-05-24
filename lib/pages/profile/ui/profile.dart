@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kaz_med/base/base_provider.dart';
@@ -65,9 +66,9 @@ class Profile extends StatelessWidget {
                           width: getProportionateScreenWidth(35),
                           height: getProportionateScreenHeight(35),
                         ),
-                        title: const Text(
-                          'About me',
-                          style: TextStyle(fontSize: 18),
+                        title: Text(
+                          'aboutMe'.tr(),
+                          style: const TextStyle(fontSize: 18),
                         ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios,
@@ -83,9 +84,9 @@ class Profile extends StatelessWidget {
                           width: getProportionateScreenWidth(35),
                           height: getProportionateScreenHeight(35),
                         ),
-                        title: const Text(
-                          'My appointments',
-                          style: TextStyle(fontSize: 18),
+                        title: Text(
+                          'myAppointments'.tr(),
+                          style: const TextStyle(fontSize: 18),
                         ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios,
@@ -101,9 +102,9 @@ class Profile extends StatelessWidget {
                           width: getProportionateScreenWidth(35),
                           height: getProportionateScreenHeight(35),
                         ),
-                        title: const Text(
-                          'Analysis',
-                          style: TextStyle(fontSize: 18),
+                        title: Text(
+                          'analysis'.tr(),
+                          style: const TextStyle(fontSize: 18),
                         ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios,
@@ -137,9 +138,9 @@ class Profile extends StatelessWidget {
                           width: getProportionateScreenWidth(35),
                           height: getProportionateScreenHeight(35),
                         ),
-                        title: const Text(
-                          'Language',
-                          style: TextStyle(fontSize: 18),
+                        title: Text(
+                          'language'.tr(),
+                          style: const TextStyle(fontSize: 18),
                         ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios,
@@ -165,9 +166,9 @@ class Profile extends StatelessWidget {
                           width: getProportionateScreenWidth(30),
                           height: getProportionateScreenHeight(30),
                         ),
-                        title: const Text(
-                          'Logout',
-                          style: TextStyle(fontSize: 18),
+                        title: Text(
+                          'logout'.tr(),
+                          style: const TextStyle(fontSize: 18),
                         ),
                         trailing: const Icon(
                           Icons.arrow_forward_ios,

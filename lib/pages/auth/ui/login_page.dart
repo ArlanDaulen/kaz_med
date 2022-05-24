@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kaz_med/base/base_provider.dart';
@@ -50,13 +51,13 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                             title: DefaultText(
-                              text: 'Welcome Back!',
+                              text: 'welcomeBack'.tr(),
                               isCenter: false,
                               fontSize: 24,
                               fontWeight: FontWeight.w700,
                             ),
                             subtitle: DefaultText(
-                              text: 'Enter your credentials to continue',
+                              text: 'enterCredentialsToContinue'.tr(),
                               color: AppColors.greyColor,
                               isCenter: false,
                               fontSize: 15,
@@ -72,7 +73,7 @@ class LoginPage extends StatelessWidget {
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               label: DefaultText(
-                                text: 'Email',
+                                text: 'email'.tr(),
                                 color: AppColors.greyColor,
                               ),
                               focusedBorder: const OutlineInputBorder(
@@ -97,7 +98,7 @@ class LoginPage extends StatelessWidget {
                             obscureText: true,
                             decoration: InputDecoration(
                               label: DefaultText(
-                                text: 'Password',
+                                text: 'password'.tr(),
                                 color: AppColors.greyColor,
                               ),
                               focusedBorder: const OutlineInputBorder(
@@ -117,7 +118,7 @@ class LoginPage extends StatelessWidget {
                             height: getProportionateScreenHeight(60),
                           ),
                           DefaultButton(
-                            text: 'Login',
+                            text: 'login'.tr(),
                             press: () => model.verificate(context),
                           ),
                           SizedBox(
@@ -126,7 +127,7 @@ class LoginPage extends StatelessWidget {
                           TextButton(
                             onPressed: () {},
                             child: DefaultText(
-                              text: 'Forgot Password?',
+                              text: 'forgotPassword'.tr(),
                               fontWeight: FontWeight.w500,
                               color: AppColors.primaryColor,
                             ),
@@ -138,7 +139,7 @@ class LoginPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               DefaultText(
-                                text: 'Don´t have an account? ',
+                                text: 'noAccount'.tr(),
                                 fontWeight: FontWeight.w500,
                                 color: AppColors.greyColor,
                               ),
@@ -150,7 +151,7 @@ class LoginPage extends StatelessWidget {
                                   ),
                                 ),
                                 child: DefaultText(
-                                  text: 'Sign Up',
+                                  text: 'signUp'.tr(),
                                   fontWeight: FontWeight.w700,
                                   color: AppColors.primaryColor,
                                 ),

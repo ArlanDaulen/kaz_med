@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_provider.dart';
@@ -33,7 +34,7 @@ class AppointmentsPage extends StatelessWidget {
                       ),
                     ),
                     title: DefaultText(
-                      text: 'My appointments',
+                      text: 'myAppointments'.tr(),
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
@@ -60,7 +61,7 @@ class AppointmentsPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DefaultText(
-                        text: 'My appointments',
+                        text: 'myAppointments'.tr(),
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                         isCenter: false,

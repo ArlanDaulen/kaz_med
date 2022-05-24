@@ -15,7 +15,8 @@ import 'package:kaz_med/shared/size_config.dart';
 
 class ProfileProvider extends BaseBloc {
   ProfileModel? profileModel;
-  ProfileService _profileService = ProfileService();
+  final ProfileService _profileService = ProfileService();
+  // ProfileProvider provider = ProfileProvider();
   Size? size;
   // ProfileProvider? provider;
 
@@ -25,7 +26,7 @@ class ProfileProvider extends BaseBloc {
     SizeConfig().init(context);
     // await getProfileInfo('asylzhan2');
     Result<ProfileModel, NetworkError> p =
-        await _profileService.getProfileInfo('asylzhann');
+        await _profileService.getProfileInfo('asylzhannn');
     p.when(success: (response) {
       profileModel = response;
       notifyListeners();
@@ -48,7 +49,12 @@ class ProfileProvider extends BaseBloc {
 
   toAbout(context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const AboutPage()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => AboutPage(
+                  profile: profileModel,
+                  profileProvider: this,
+                )));
   }
 
   toAppointments(context) {

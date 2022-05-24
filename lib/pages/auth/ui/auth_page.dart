@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kaz_med/base/base_provider.dart';
@@ -74,7 +75,7 @@ class AuthPage extends StatelessWidget {
                                 model.toLoginPage(context);
                               }),
                               child: _buildButtons(
-                                'Login',
+                                'login'.tr(),
                               ),
                             ),
                             // _buildButtons('Login', model.toLoginPage(context)),
@@ -86,7 +87,7 @@ class AuthPage extends StatelessWidget {
                                 model.toSignUpPage(context);
                               }),
                               child: _buildButtons(
-                                'Sign Up',
+                                'signUp'.tr(),
                                 isFilled: true,
                               ),
                             ),

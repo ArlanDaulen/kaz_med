@@ -11,4 +11,9 @@ class ProfileService {
         route: PlaceholderClient.getUser(username),
         responseType: ProfileModel());
   }
+
+  Future<Result<dynamic, NetworkError>> updateUser(
+      Map<String, dynamic> data) async {
+    return NetworkExecuter.execute(route: PlaceholderClient.editUser(data));
+  }
 }

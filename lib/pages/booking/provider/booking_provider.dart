@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_bloc.dart';
 import 'package:kaz_med/pages/payment/ui/payment_page.dart';
@@ -10,18 +11,18 @@ import '../../../shared/size_config.dart';
 class BookingPageProvider extends BaseBloc {
   String month = '';
   List<String> months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    'january'.tr(),
+    'february'.tr(),
+    'march'.tr(),
+    'april'.tr(),
+    'may'.tr(),
+    'june'.tr(),
+    'july'.tr(),
+    'august'.tr(),
+    'september'.tr(),
+    'october'.tr(),
+    'november'.tr(),
+    'december'.tr(),
   ];
   DateTime now = DateTime.now();
   DateTime? selectedDate;

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,7 +39,7 @@ class ReviewPage extends StatelessWidget {
                   ),
                 ),
                 title: DefaultText(
-                  text: 'Review',
+                  text: 'review'.tr(),
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                 ),
@@ -52,7 +53,7 @@ class ReviewPage extends StatelessWidget {
                   horizontal: getProportionateScreenWidth(25),
                   vertical: getProportionateScreenHeight(25)),
               child: DefaultButton(
-                text: 'Send',
+                text: 'send'.tr(),
                 press: () => model.sendReview(context),
               ),
             ),
@@ -66,7 +67,7 @@ class ReviewPage extends StatelessWidget {
                     height: getProportionateScreenHeight(30),
                   ),
                   DefaultText(
-                    text: 'Rating',
+                    text: 'rating'.tr(),
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
@@ -103,7 +104,7 @@ class ReviewPage extends StatelessWidget {
                     height: getProportionateScreenHeight(40),
                   ),
                   DefaultText(
-                    text: 'Review',
+                    text: 'review'.tr(),
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),

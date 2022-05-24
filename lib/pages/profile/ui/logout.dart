@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/pages/profile/provider/profile_provider.dart';
 import 'package:kaz_med/shared/size_config.dart';
@@ -31,7 +32,7 @@ class LogoutWidget extends StatelessWidget {
             children: [
               SizedBox(height: getProportionateScreenHeight(45)),
               DefaultText(
-                text: 'Are you want logout?',
+                text: 'areYouWantLogout'.tr(),
                 fontWeight: FontWeight.w600,
                 fontSize: 18,
               ),
@@ -61,7 +62,7 @@ class LogoutWidget extends StatelessWidget {
                             Navigator.pop(context);
                           },
                           child: DefaultText(
-                            text: 'No',
+                            text: 'no'.tr(),
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                           )),
@@ -80,7 +81,7 @@ class LogoutWidget extends StatelessWidget {
                           profileProvider.exit(context);
                         },
                         child: DefaultText(
-                          text: 'Yes',
+                          text: 'yes'.tr(),
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                           color: AppColors.systemRedColor,

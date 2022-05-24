@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kaz_med/base/base_provider.dart';
@@ -33,7 +34,7 @@ class PaymentPage extends StatelessWidget {
                       ),
                     ),
                     title: DefaultText(
-                      text: 'Payment',
+                      text: 'payment'.tr(),
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
@@ -51,7 +52,7 @@ class PaymentPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DefaultText(
-                        text: 'How would you like to pay for your appointment?',
+                        text: 'payForYourAppointment'.tr(),
                         isCenter: false,
                       ),
                       UIHelper.verticalSpace(20),
