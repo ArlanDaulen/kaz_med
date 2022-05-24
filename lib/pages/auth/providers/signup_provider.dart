@@ -30,54 +30,54 @@ class SignUpProvider extends BaseBloc {
   }
 
   register(context) async {
-    setLoading(true);
-    try {
-      var response = await _authService.register(
-          firstNameController.text,
-          lastNameController.text,
-          emailController.text,
-          passwordController.text);
-      if (response.statusCode == 200) {
+    // setLoading(true);
+    // try {
+    //   var response = await _authService.register(
+    //       firstNameController.text,
+    //       lastNameController.text,
+    //       emailController.text,
+    //       passwordController.text);
+    //   if (response.statusCode == 200) {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (_) => LoginPage(),
           ),
         );
-      } else {
-        showDialogCustom(
-        context: GlobalVariable.navState.currentContext!,
-        barrierDismissible: true,
-        backgroundColor: Colors.black26,
-        title: 'Error',
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          child: const Center(
-            child: Text(
-              'Invalid inputs',
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      );
-      }
-    } catch (e) {
-      return showDialogCustom(
-        context: GlobalVariable.navState.currentContext!,
-        barrierDismissible: true,
-        backgroundColor: Colors.black26,
-        title: 'Error',
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          child: Center(
-            child: Text(
-              e.toString(),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      );
-    }
+    //   } else {
+    //     showDialogCustom(
+    //     context: GlobalVariable.navState.currentContext!,
+    //     barrierDismissible: true,
+    //     backgroundColor: Colors.black26,
+    //     title: 'Error',
+    //     child: Container(
+    //       padding: const EdgeInsets.all(20),
+    //       child: const Center(
+    //         child: Text(
+    //           'Invalid inputs',
+    //           textAlign: TextAlign.center,
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    //   }
+    // } catch (e) {
+    //   return showDialogCustom(
+    //     context: GlobalVariable.navState.currentContext!,
+    //     barrierDismissible: true,
+    //     backgroundColor: Colors.black26,
+    //     title: 'Error',
+    //     child: Container(
+    //       padding: const EdgeInsets.all(20),
+    //       child: Center(
+    //         child: Text(
+    //           e.toString(),
+    //           textAlign: TextAlign.center,
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
     setLoading(false);
   }
 }

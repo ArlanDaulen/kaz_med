@@ -31,7 +31,7 @@ class ClinicsProvider extends BaseBloc {
     setLoading(false);
   }
 
-   checkIsServiceEnabled() async {
+  checkIsServiceEnabled() async {
     serviceEnabled = await location.serviceEnabled();
     if (!serviceEnabled!) {
       serviceEnabled = await location.requestService();
@@ -80,7 +80,9 @@ class ClinicsProvider extends BaseBloc {
     http.Response response = await _service.getAllMedCenter();
     if (response.statusCode == 200) {
       log('Succesfull clinics');
-      medCenters = MedicalCenterModel.fromJson(json.decode(response.body)[0]);
+      medCenters = MedicalCenterModel.fromJson(
+        json.decode(response.body) == null ? [] : json.decode(response.body)[0],
+      );
       notifyListeners();
     } else {
       log('Error: ${response.statusCode}');

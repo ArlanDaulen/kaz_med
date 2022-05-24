@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:kaz_med/app/data/models/profile_model.dart';
 import 'package:kaz_med/app/data/services/profile_service.dart';
+import 'package:kaz_med/app/main/user_data.dart';
 import 'package:kaz_med/base/base_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/core/freezed/network_error.dart';
@@ -18,29 +19,24 @@ class ProfileProvider extends BaseBloc {
   final ProfileService _profileService = ProfileService();
   // ProfileProvider provider = ProfileProvider();
   Size? size;
-  // ProfileProvider? provider;
+  UserData _userData = UserData(); // ProfileProvider? provider;
 
   init(context) async {
     setLoading(true);
     size = MediaQuery.of(context).size;
     SizeConfig().init(context);
     // await getProfileInfo('asylzhan2');
-    Result<ProfileModel, NetworkError> p =
-        await _profileService.getProfileInfo('asylzhannn');
-    p.when(success: (response) {
-      profileModel = response;
-      notifyListeners();
-    }, failure: (error) {
-      log('Error getProfileInfo');
-    });
+    await getProfileInfo();
     setLoading(false);
   }
 
-  getProfileInfo(String username) async {
-    Result<ProfileModel, NetworkError> p =
-        await _profileService.getProfileInfo(username);
+  getProfileInfo() async {
+    Result<ProfileModel, NetworkError> p = await _profileService.getProfileInfo(
+      await _userData.getUserEmail(),
+    );
     p.when(success: (response) {
       profileModel = response;
+      log('ROLE: ' + profileModel!.roles!.first.toString());
       notifyListeners();
     }, failure: (error) {
       log('Error getProfileInfo');

@@ -52,13 +52,9 @@ class MyAppModel extends BaseBloc {
 
   Widget getHomeScreen() {
     // if (isAuthenticated) {
-    //   return HomePage();
+    //   return IndexPage();
     // } else {
-    // return const IndexPage();
-    // if (isAuthenticated) {
-    return const IndexPage();
-    // } else {
-    //   return const AuthPage();
+      return const LoginPage();
     // }
   }
 }

@@ -29,55 +29,72 @@ class LoginProvider extends BaseBloc {
   }
 
   verificate(context) async {
-    setLoading(true);
-    try {
-      var response = await _authService.login(
-          emailController.text, passwordController.text);
-      if (response.statusCode == 200) {
-        _userData.setToken(response.headers.values.toList()[3].substring(7));
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (_) => IndexPage(),
-            ),
-            (route) => false);
-      } else {
-        log(response.statusCode.toString());
-        setLoading(false);
-        return showDialogCustom(
-          context: GlobalVariable.navState.currentContext!,
-          barrierDismissible: true,
-          backgroundColor: Colors.black26,
-          title: 'Error',
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            child: const Center(
-              child: Text(
-                "Invalid inputs",
-                textAlign: TextAlign.center,
-              ),
-            ),
+    // setLoading(true);
+    Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const IndexPage(),
           ),
+          (route) => false,
         );
-      }
-    } catch (e) {
-      setLoading(false);
-      return showDialogCustom(
-        context: GlobalVariable.navState.currentContext!,
-        barrierDismissible: true,
-        backgroundColor: Colors.black26,
-        title: 'Error',
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          child: const Center(
-            child: Text(
-              "Something went wrong!",
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      );
-    }
+    // try {
+    //   var response = await _authService.login(
+    //       emailController.text, passwordController.text);
+    //   if (response.statusCode == 200) {
+    //     _userData.setToken(
+    //       response.headers.values.toList()[3].split(',').first.substring(8),
+    //     );
+    //     final auth = response.headers.values.toList()[3].split(',');
+    //     _userData.setAllUserDatas(
+    //       auth.first.substring(8),
+    //       auth.last.substring(10),
+    //     );
+    //     log(auth.last.substring(10));
+    //     Navigator.pushAndRemoveUntil(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (_) => const IndexPage(),
+    //       ),
+    //       (route) => false,
+    //     );
+    //   } else {
+    //     log(response.statusCode.toString());
+    //     setLoading(false);
+    //     return showDialogCustom(
+    //       context: GlobalVariable.navState.currentContext!,
+    //       barrierDismissible: true,
+    //       backgroundColor: Colors.black26,
+    //       title: 'Error',
+    //       child: Container(
+    //         padding: const EdgeInsets.all(20),
+    //         child: const Center(
+    //           child: Text(
+    //             "Invalid inputs",
+    //             textAlign: TextAlign.center,
+    //           ),
+    //         ),
+    //       ),
+    //     );
+    //   }
+    // } catch (e) {
+    //   setLoading(false);
+    //   return showDialogCustom(
+    //     context: GlobalVariable.navState.currentContext!,
+    //     barrierDismissible: true,
+    //     backgroundColor: Colors.black26,
+    //     title: 'Error',
+    //     child: Container(
+    //       padding: const EdgeInsets.all(20),
+    //       child: const Center(
+    //         child: Text(
+    //           "Something went wrong!",
+    //           textAlign: TextAlign.center,
+    //         ),
+    //       ),
+    //     ),
+    //   );
+    // }
+    
     notifyListeners();
   }
 }

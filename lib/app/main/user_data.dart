@@ -120,34 +120,20 @@ class UserData {
     return value ?? false;
   }
 
-  // void deleteAllUserData() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   await prefs.setString('token', "");
-  //   await prefs.setString('phone', "");
-  //   await prefs.setString('email', "");
-  //   await prefs.setInt('expire_date', -1);
-  //   await prefs.setInt('userId', -1);
-  //   await prefs.setString('username', "");
-  // }
+  void deleteAllUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', "");
+    await prefs.setString('phone', "");
+    await prefs.setString('email', "");
+    await prefs.setInt('expire_date', -1);
+    await prefs.setInt('userId', -1);
+    await prefs.setString('username', "");
+  }
 
-  // void setAllUserDatas(String? token, int? expireDate, Customer? user) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   await prefs.setString('token', token!);
-  //   await prefs.setString('phone', user!.phone!);
-  //   await prefs.setString('email', user.email!);
-  //   await prefs.setInt('expire_date', expireDate!);
-  //   await prefs.setInt('userId', user.id!);
-  //   await prefs.setString('username', user.fullName!);
-  // }
+  void setAllUserDatas(String? token, String? email) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', token!);
+    await prefs.setString('email', email!);
+  }
 
-  // Future<Customer> getUserModel() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   Customer user = Customer(
-  //       id: prefs.getInt('userId'),
-  //       email: prefs.getString('email'),
-  //       phone: prefs.getString('phone'),
-  //       fullName: prefs.getString('username'));
-
-  //   return user;
-  // }
 }

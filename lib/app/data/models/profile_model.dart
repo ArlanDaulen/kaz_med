@@ -1,4 +1,3 @@
-import 'package:kaz_med/app/data/models/doctor_model.dart';
 import 'package:kaz_med/core/network/interfaces/base_network_model.dart';
 
 class ProfileModel extends BaseNetworkModel<ProfileModel> {
@@ -14,8 +13,12 @@ class ProfileModel extends BaseNetworkModel<ProfileModel> {
   bool? status;
   num? rating;
   num? peopleCount;
-  String? avatar;
-  List<DoctorModel>? doctors;
+  List<String>? roles;
+  bool? enabled;
+  List<String>? authorities;
+  bool? accountNonLocked;
+  bool? credentialsNonExpired;
+  bool? accountNonExpired;
 
   ProfileModel(
       {this.customerId,
@@ -30,8 +33,12 @@ class ProfileModel extends BaseNetworkModel<ProfileModel> {
       this.status,
       this.rating,
       this.peopleCount,
-      this.avatar,
-      this.doctors});
+      this.roles,
+      this.enabled,
+      this.authorities,
+      this.accountNonLocked,
+      this.credentialsNonExpired,
+      this.accountNonExpired});
 
   ProfileModel.fromJson(Map<String, dynamic> json) {
     customerId = json['customerId'];
@@ -46,13 +53,12 @@ class ProfileModel extends BaseNetworkModel<ProfileModel> {
     status = json['status'];
     rating = json['rating'];
     peopleCount = json['peopleCount'];
-    avatar = json['avatar'];
-    if (json['doctors'] != null) {
-      doctors = <DoctorModel>[];
-      json['doctors'].forEach((v) {
-        doctors!.add(DoctorModel.fromJson(v));
-      });
-    }
+    roles = json['roles'].cast<String>();
+    enabled = json['enabled'];
+    authorities = json['authorities'].cast<String>();
+    accountNonLocked = json['accountNonLocked'];
+    credentialsNonExpired = json['credentialsNonExpired'];
+    accountNonExpired = json['accountNonExpired'];
   }
 
   Map<String, dynamic> toJson() {
@@ -69,15 +75,16 @@ class ProfileModel extends BaseNetworkModel<ProfileModel> {
     data['status'] = status;
     data['rating'] = rating;
     data['peopleCount'] = peopleCount;
-    data['avatar'] = avatar;
-    if (doctors != null) {
-      data['doctors'] = doctors!.map((v) => v.toJson()).toList();
-    }
+    data['roles'] = roles;
+    data['enabled'] = enabled;
+    data['authorities'] = authorities;
+    data['accountNonLocked'] = accountNonLocked;
+    data['credentialsNonExpired'] = credentialsNonExpired;
+    data['accountNonExpired'] = accountNonExpired;
     return data;
   }
 
   @override
-  ProfileModel fromJson(Map<String, dynamic> json) {
-    return ProfileModel.fromJson(json);
-  }
+  ProfileModel fromJson(Map<String, dynamic> json) =>
+      ProfileModel.fromJson(json);
 }

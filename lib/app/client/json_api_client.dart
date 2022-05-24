@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:kaz_med/app/main/user_data.dart';
 import 'package:kaz_med/core/network/interfaces/base_client_generator.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -21,10 +23,13 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
 
   @override
   Future<Map<String, dynamic>> get header async {
+    final token = await _userData.getToken();
+    log('TOKEN: ' + token);
     return {
       'Content-Type': 'application/json',
       "Authorization":
           "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3lsemhhbm5uQGdtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIkFETUlOIl0sImlhdCI6MTY1Mjk2MjUzMywiZXhwIjoxNjUyOTY2MTMzfQ.PkRKz7WVl8IpQWY4qBEczSTVqYhkZO-zWkjeNtnvnnPcEMalqrGHQu_hBtfcTYK40rvyY2EHieK5Ti0EzYKsqQ",
+      "Authorization": "Bearer " + token,
       // "Authorization":
       //     "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhc3lsemhhbkBnbWFpbC5jb20iLCJhdXRob3JpdGllcyI6WyJBRE1JTiJdLCJpYXQiOjE2NTIzNjEzMDQsImV4cCI6MTY1MjM2NDkwNH0.UPLyIPcFfz7VUU9dziOwLUz7El6Q_vlBC49GZVx_xwVlJGekiTp4CyenXCOydcX_IuN_Y3Kj233ZxupawiPIww",
     };
@@ -40,6 +45,7 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
       editUser: (data) =>
           "client-service/customer/private/update/${data['email']}",
       // getAllAnalysis
+      //     'auth-service/customer/private/find/$username',
     );
   }
 
