@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_provider.dart';
@@ -38,7 +39,7 @@ class ClinicsProfilePage extends StatelessWidget {
                       ),
                     ),
                     title: DefaultText(
-                      text: 'Clinic´s Profile',
+                      text: 'clinicsProfile'.tr(),
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
@@ -73,7 +74,7 @@ class ClinicsProfilePage extends StatelessWidget {
                           height: getProportionateScreenHeight(17),
                         ),
                         DefaultText(
-                          text: 'About',
+                          text: 'about'.tr(),
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
@@ -90,7 +91,7 @@ class ClinicsProfilePage extends StatelessWidget {
                         ),
                         _divider(),
                         DefaultText(
-                          text: 'Qualifications',
+                          text: 'qualification'.tr(),
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
@@ -100,7 +101,7 @@ class ClinicsProfilePage extends StatelessWidget {
                         _buildPointers(model.admissionFee),
                         _divider(),
                         DefaultText(
-                          text: 'Services',
+                          text: 'services'.tr(),
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
@@ -109,9 +110,9 @@ class ClinicsProfilePage extends StatelessWidget {
                         ),
                         _buildPointers(model.services),
                         _divider(),
-                        _buildOtherTiles('Doctors'),
+                        _buildOtherTiles('doctors'.tr()),
                         _divider(),
-                        _buildOtherTiles('Reviews'),
+                        _buildOtherTiles('reviews'.tr()),
                         SizedBox(
                           height: getProportionateScreenHeight(96),
                         ),

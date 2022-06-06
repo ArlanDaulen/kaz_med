@@ -34,4 +34,9 @@ class ProfileService {
       headers: {'Authorization': 'Bearer ${await UserData().getToken()}'},
     );
   }
+
+  Future<Result<dynamic, NetworkError>> updateUser(
+      Map<String, dynamic> data) async {
+    return NetworkExecuter.execute(route: PlaceholderClient.editUser(data));
+  }
 }

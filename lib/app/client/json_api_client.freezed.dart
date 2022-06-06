@@ -33,6 +33,12 @@ class _$PlaceholderClientTearOff {
       username,
     );
   }
+
+  _EditUser editUser(Map<String, dynamic> data) {
+    return _EditUser(
+      data,
+    );
+  }
 }
 
 /// @nodoc
@@ -45,6 +51,7 @@ mixin _$PlaceholderClient {
     required TResult Function(String name, String password) login,
     required TResult Function() getAllDoctors,
     required TResult Function(String username) getUser,
+    required TResult Function(Map<String, dynamic> data) editUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +59,7 @@ mixin _$PlaceholderClient {
     TResult Function(String name, String password)? login,
     TResult Function()? getAllDoctors,
     TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +67,7 @@ mixin _$PlaceholderClient {
     TResult Function(String name, String password)? login,
     TResult Function()? getAllDoctors,
     TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,6 +76,7 @@ mixin _$PlaceholderClient {
     required TResult Function(_Login value) login,
     required TResult Function(_GetAllDoctors value) getAllDoctors,
     required TResult Function(_GetUser value) getUser,
+    required TResult Function(_EditUser value) editUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +84,7 @@ mixin _$PlaceholderClient {
     TResult Function(_Login value)? login,
     TResult Function(_GetAllDoctors value)? getAllDoctors,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +92,7 @@ mixin _$PlaceholderClient {
     TResult Function(_Login value)? login,
     TResult Function(_GetAllDoctors value)? getAllDoctors,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -180,6 +192,7 @@ class _$_Login extends _Login {
     required TResult Function(String name, String password) login,
     required TResult Function() getAllDoctors,
     required TResult Function(String username) getUser,
+    required TResult Function(Map<String, dynamic> data) editUser,
   }) {
     return login(name, password);
   }
@@ -190,6 +203,7 @@ class _$_Login extends _Login {
     TResult Function(String name, String password)? login,
     TResult Function()? getAllDoctors,
     TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
   }) {
     return login?.call(name, password);
   }
@@ -200,6 +214,7 @@ class _$_Login extends _Login {
     TResult Function(String name, String password)? login,
     TResult Function()? getAllDoctors,
     TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -214,6 +229,7 @@ class _$_Login extends _Login {
     required TResult Function(_Login value) login,
     required TResult Function(_GetAllDoctors value) getAllDoctors,
     required TResult Function(_GetUser value) getUser,
+    required TResult Function(_EditUser value) editUser,
   }) {
     return login(this);
   }
@@ -224,6 +240,7 @@ class _$_Login extends _Login {
     TResult Function(_Login value)? login,
     TResult Function(_GetAllDoctors value)? getAllDoctors,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
   }) {
     return login?.call(this);
   }
@@ -234,6 +251,7 @@ class _$_Login extends _Login {
     TResult Function(_Login value)? login,
     TResult Function(_GetAllDoctors value)? getAllDoctors,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -296,6 +314,7 @@ class _$_GetAllDoctors extends _GetAllDoctors {
     required TResult Function(String name, String password) login,
     required TResult Function() getAllDoctors,
     required TResult Function(String username) getUser,
+    required TResult Function(Map<String, dynamic> data) editUser,
   }) {
     return getAllDoctors();
   }
@@ -306,6 +325,7 @@ class _$_GetAllDoctors extends _GetAllDoctors {
     TResult Function(String name, String password)? login,
     TResult Function()? getAllDoctors,
     TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
   }) {
     return getAllDoctors?.call();
   }
@@ -316,6 +336,7 @@ class _$_GetAllDoctors extends _GetAllDoctors {
     TResult Function(String name, String password)? login,
     TResult Function()? getAllDoctors,
     TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
     required TResult orElse(),
   }) {
     if (getAllDoctors != null) {
@@ -330,6 +351,7 @@ class _$_GetAllDoctors extends _GetAllDoctors {
     required TResult Function(_Login value) login,
     required TResult Function(_GetAllDoctors value) getAllDoctors,
     required TResult Function(_GetUser value) getUser,
+    required TResult Function(_EditUser value) editUser,
   }) {
     return getAllDoctors(this);
   }
@@ -340,6 +362,7 @@ class _$_GetAllDoctors extends _GetAllDoctors {
     TResult Function(_Login value)? login,
     TResult Function(_GetAllDoctors value)? getAllDoctors,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
   }) {
     return getAllDoctors?.call(this);
   }
@@ -350,6 +373,7 @@ class _$_GetAllDoctors extends _GetAllDoctors {
     TResult Function(_Login value)? login,
     TResult Function(_GetAllDoctors value)? getAllDoctors,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
     required TResult orElse(),
   }) {
     if (getAllDoctors != null) {
@@ -430,6 +454,7 @@ class _$_GetUser extends _GetUser {
     required TResult Function(String name, String password) login,
     required TResult Function() getAllDoctors,
     required TResult Function(String username) getUser,
+    required TResult Function(Map<String, dynamic> data) editUser,
   }) {
     return getUser(username);
   }
@@ -440,6 +465,7 @@ class _$_GetUser extends _GetUser {
     TResult Function(String name, String password)? login,
     TResult Function()? getAllDoctors,
     TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
   }) {
     return getUser?.call(username);
   }
@@ -450,6 +476,7 @@ class _$_GetUser extends _GetUser {
     TResult Function(String name, String password)? login,
     TResult Function()? getAllDoctors,
     TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -464,6 +491,7 @@ class _$_GetUser extends _GetUser {
     required TResult Function(_Login value) login,
     required TResult Function(_GetAllDoctors value) getAllDoctors,
     required TResult Function(_GetUser value) getUser,
+    required TResult Function(_EditUser value) editUser,
   }) {
     return getUser(this);
   }
@@ -474,6 +502,7 @@ class _$_GetUser extends _GetUser {
     TResult Function(_Login value)? login,
     TResult Function(_GetAllDoctors value)? getAllDoctors,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
   }) {
     return getUser?.call(this);
   }
@@ -484,6 +513,7 @@ class _$_GetUser extends _GetUser {
     TResult Function(_Login value)? login,
     TResult Function(_GetAllDoctors value)? getAllDoctors,
     TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -500,5 +530,150 @@ abstract class _GetUser extends PlaceholderClient {
   String get username => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$GetUserCopyWith<_GetUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$EditUserCopyWith<$Res> {
+  factory _$EditUserCopyWith(_EditUser value, $Res Function(_EditUser) then) =
+      __$EditUserCopyWithImpl<$Res>;
+  $Res call({Map<String, dynamic> data});
+}
+
+/// @nodoc
+class __$EditUserCopyWithImpl<$Res>
+    extends _$PlaceholderClientCopyWithImpl<$Res>
+    implements _$EditUserCopyWith<$Res> {
+  __$EditUserCopyWithImpl(_EditUser _value, $Res Function(_EditUser) _then)
+      : super(_value, (v) => _then(v as _EditUser));
+
+  @override
+  _EditUser get _value => super._value as _EditUser;
+
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_EditUser(
+      data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_EditUser extends _EditUser {
+  const _$_EditUser(this.data) : super._();
+
+  @override
+  final Map<String, dynamic> data;
+
+  @override
+  String toString() {
+    return 'PlaceholderClient.editUser(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _EditUser &&
+            (identical(other.data, data) ||
+                const DeepCollectionEquality().equals(other.data, data)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(data);
+
+  @JsonKey(ignore: true)
+  @override
+  _$EditUserCopyWith<_EditUser> get copyWith =>
+      __$EditUserCopyWithImpl<_EditUser>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String name, String password) login,
+    required TResult Function() getAllDoctors,
+    required TResult Function(String username) getUser,
+    required TResult Function(Map<String, dynamic> data) editUser,
+  }) {
+    return editUser(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String name, String password)? login,
+    TResult Function()? getAllDoctors,
+    TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
+  }) {
+    return editUser?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String name, String password)? login,
+    TResult Function()? getAllDoctors,
+    TResult Function(String username)? getUser,
+    TResult Function(Map<String, dynamic> data)? editUser,
+    required TResult orElse(),
+  }) {
+    if (editUser != null) {
+      return editUser(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Login value) login,
+    required TResult Function(_GetAllDoctors value) getAllDoctors,
+    required TResult Function(_GetUser value) getUser,
+    required TResult Function(_EditUser value) editUser,
+  }) {
+    return editUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_GetAllDoctors value)? getAllDoctors,
+    TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
+  }) {
+    return editUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Login value)? login,
+    TResult Function(_GetAllDoctors value)? getAllDoctors,
+    TResult Function(_GetUser value)? getUser,
+    TResult Function(_EditUser value)? editUser,
+    required TResult orElse(),
+  }) {
+    if (editUser != null) {
+      return editUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EditUser extends PlaceholderClient {
+  const factory _EditUser(Map<String, dynamic> data) = _$_EditUser;
+  const _EditUser._() : super._();
+
+  Map<String, dynamic> get data => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$EditUserCopyWith<_EditUser> get copyWith =>
       throw _privateConstructorUsedError;
 }

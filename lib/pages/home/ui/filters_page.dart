@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,7 +49,7 @@ class FiltersPage extends StatelessWidget {
                 centerTitle: true,
                 elevation: 0,
                 title: DefaultText(
-                  text: 'Filters',
+                  text: 'filters'.tr(),
                   fontWeight: FontWeight.w700,
                   fontSize: 18,
                 ),
@@ -63,7 +64,7 @@ class FiltersPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: DefaultButton(
-                      text: 'Reset',
+                      text: 'reset'.tr(),
                       textColor: AppColors.primaryColor,
                       color: AppColors.whiteColor,
                       isWithShadow: true,
@@ -75,7 +76,7 @@ class FiltersPage extends StatelessWidget {
                   ),
                   Expanded(
                     child: DefaultButton(
-                      text: 'Apply',
+                      text: 'apply'.tr(),
                       // color: AppColors.whiteColor,
                       press: () async => await model.searchWithLDRPET(context),
                     ),
@@ -91,7 +92,7 @@ class FiltersPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   DefaultText(
-                    text: 'Distance from you',
+                    text: 'distanceFromYou'.tr(),
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
                   ),
@@ -128,7 +129,7 @@ class FiltersPage extends StatelessWidget {
                     ),
                   ),
                   DefaultText(
-                    text: 'Ratings',
+                    text: 'ratings'.tr(),
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
                   ),
@@ -148,7 +149,7 @@ class FiltersPage extends StatelessWidget {
                     ),
                   ),
                   DefaultText(
-                    text: 'Price',
+                    text: 'price'.tr(),
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
                   ),
@@ -178,7 +179,7 @@ class FiltersPage extends StatelessWidget {
                     ),
                   ),
                   DefaultText(
-                    text: 'Year of experience',
+                    text: 'yearOfExperience'.tr(),
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
                   ),
@@ -199,7 +200,7 @@ class FiltersPage extends StatelessWidget {
                     ),
                   ),
                   DefaultText(
-                    text: 'Schedule',
+                    text: 'schedule'.tr(),
                     fontWeight: FontWeight.w600,
                     fontSize: 15,
                   ),
@@ -211,7 +212,7 @@ class FiltersPage extends StatelessWidget {
                         children: [
                           const Spacer(),
                           DefaultText(
-                            text: 'time',
+                            text: 'time'.tr(),
                             fontWeight: FontWeight.w600,
                             fontSize: 15,
                           ),

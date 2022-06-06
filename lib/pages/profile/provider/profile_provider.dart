@@ -19,7 +19,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileProvider extends BaseBloc {
   ProfileModel? profileModel;
-  // ProfileService _profileService = ProfileService();
+  final ProfileService _profileService = ProfileService();
+  // ProfileProvider provider = ProfileProvider();
   Size? size;
   UserData _userData = UserData(); // ProfileProvider? provider;
   bool isAsDoctor = true;
@@ -75,7 +76,12 @@ class ProfileProvider extends BaseBloc {
 
   toAbout(context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const AboutPage()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => AboutPage(
+                  profile: profileModel,
+                  profileProvider: this,
+                )));
   }
 
   toAppointments(context) {

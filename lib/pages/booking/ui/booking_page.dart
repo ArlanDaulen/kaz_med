@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +34,7 @@ class BookingPage extends StatelessWidget {
                 ),
               ),
               title: DefaultText(
-                text: 'Booking',
+                text: 'booking'.tr(),
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
               ),
@@ -172,7 +173,7 @@ class BookingPage extends StatelessWidget {
                 ),
                 const Spacer(),
                 DefaultText(
-                  text: 'Select time',
+                  text: 'selectTime'.tr(),
                   fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
@@ -222,7 +223,7 @@ class BookingPage extends StatelessWidget {
                 ),
                 const Spacer(),
                 DefaultButton(
-                  text: 'Next',
+                  text: 'next'.tr(),
                   press: () => model.isButtonEnabled
                       ? model.toPayment(context)
                       : log('Error'),

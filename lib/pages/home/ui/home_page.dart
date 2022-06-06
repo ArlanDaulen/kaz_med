@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -79,7 +80,7 @@ class HomePage extends StatelessWidget {
               ),
               child: AppBar(
                 title: DefaultText(
-                  text: 'Doctors',
+                  text: 'doctors'.tr(),
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                 ),
@@ -123,7 +124,7 @@ class HomePage extends StatelessWidget {
                             ),
                             borderRadius: BorderRadius.circular(4),
                           ),
-                          hintText: "Doctor's name",
+                          hintText: "doctorsName".tr(),
                           hintStyle: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontWeight: FontWeight.w500,
@@ -172,7 +173,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             body: model.isLoading
-                ? LoadingView()
+                ? const LoadingView()
                 : Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: getProportionateScreenWidth(25),
@@ -228,14 +229,14 @@ class HomePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             DefaultText(
-                              text: 'Top Doctors',
+                              text: 'topDoctors'.tr(),
                               fontSize: 15,
                               fontWeight: FontWeight.w600,
                             ),
                             TextButton(
                               onPressed: () {},
                               child: DefaultText(
-                                text: 'View all',
+                                text: 'viewAll'.tr(),
                                 color: AppColors.primaryColor,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,

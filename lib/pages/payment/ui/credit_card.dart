@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,7 +35,7 @@ class CreditCard extends StatelessWidget {
                       ),
                     ),
                     title: DefaultText(
-                      text: 'Credit Card',
+                      text: 'creditCard'.tr(),
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
@@ -52,13 +53,13 @@ class CreditCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DefaultText(
-                        text: 'Add card details',
+                        text: 'addCardDetails'.tr(),
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
                       ),
                       UIHelper.verticalSpace(20),
                       DefaultText(
-                        text: 'Card name',
+                        text: 'cardName'.tr(),
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
@@ -91,7 +92,7 @@ class CreditCard extends StatelessWidget {
                       UIHelper.verticalSpace(
                         getProportionateScreenHeight(20),
                       ),
-                      DefaultText(text: 'Card number'),
+                      DefaultText(text: 'cardNumber'.tr()),
                       UIHelper.verticalSpace(
                         getProportionateScreenHeight(8),
                       ),

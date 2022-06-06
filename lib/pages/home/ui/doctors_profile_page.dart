@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -61,7 +62,7 @@ class DoctorsProfilePage extends StatelessWidget {
                 ),
               ),
               title: DefaultText(
-                text: 'Doctor´s Profile',
+                text: 'doctorsProfile'.tr(),
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
               ),
@@ -98,7 +99,7 @@ class DoctorsProfilePage extends StatelessWidget {
                     height: getProportionateScreenHeight(17),
                   ),
                   DefaultText(
-                    text: 'About',
+                    text: 'about'.tr(),
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
@@ -116,7 +117,7 @@ class DoctorsProfilePage extends StatelessWidget {
                   ),
                   _divider(),
                   DefaultText(
-                    text: 'Qualifications',
+                    text: 'qualification'.tr(),
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
@@ -129,7 +130,7 @@ class DoctorsProfilePage extends StatelessWidget {
                           : qualifiactions),
                   _divider(),
                   DefaultText(
-                    text: 'Services',
+                    text: 'services'.tr(),
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
@@ -140,7 +141,8 @@ class DoctorsProfilePage extends StatelessWidget {
                   _divider(),
                   GestureDetector(
                     onTap: () => model.setReviewsTap(),
-                    child: _buildOtherTiles('Reviews', model.reviewsTapped),
+                    child:
+                        _buildOtherTiles('reviews'.tr(), model.reviewsTapped),
                   ),
                   SizedBox(
                     height: getProportionateScreenHeight(
@@ -187,7 +189,7 @@ class DoctorsProfilePage extends StatelessWidget {
                   _divider(),
                   GestureDetector(
                     onTap: () => model.setFeesTap(),
-                    child: _buildOtherTiles('Fees', model.feesTapped),
+                    child: _buildOtherTiles('fees'.tr(), model.feesTapped),
                   ),
                   SizedBox(
                     height: getProportionateScreenHeight(10),
@@ -252,7 +254,7 @@ class DoctorsProfilePage extends StatelessWidget {
               ),
               Expanded(
                 child: DefaultButton(
-                  text: 'Book appointment',
+                  text: 'bookAppointment'.tr(),
                   textColor: AppColors.whiteColor,
                   press: () => Navigator.push(
                     context,

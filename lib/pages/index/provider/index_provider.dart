@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kaz_med/base/base_bloc.dart';
@@ -33,7 +34,7 @@ class IndexProvider extends BaseBloc {
           height: getProportionateScreenHeight(20),
           color: AppColors.primaryColor,
         ),
-        label: 'Doctors',
+        label: 'doctors'.tr(),
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
@@ -48,7 +49,7 @@ class IndexProvider extends BaseBloc {
           height: getProportionateScreenHeight(20),
           color: AppColors.primaryColor,
         ),
-        label: 'Clinics',
+        label: 'clinics'.tr(),
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
@@ -63,7 +64,7 @@ class IndexProvider extends BaseBloc {
           height: getProportionateScreenHeight(20),
           color: AppColors.primaryColor,
         ),
-        label: 'Specialties',
+        label: 'specialty'.tr(),
       ),
       // BottomNavigationBarItem(
       //   icon: SvgPicture.asset(
@@ -92,7 +93,7 @@ class IndexProvider extends BaseBloc {
           height: getProportionateScreenHeight(20),
           color: AppColors.primaryColor,
         ),
-        label: 'Profile',
+        label: 'profile'.tr(),
       ),
     ];
     notifyListeners();

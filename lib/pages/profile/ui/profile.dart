@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/profile/provider/profile_provider.dart';

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/profile/provider/language_provider.dart';
@@ -17,7 +18,7 @@ class LanguageWidget extends StatelessWidget {
       onReady: (_) => _.init(context),
       builder: (context, model, child) {
         return model.isLoading
-            ? LoadingView()
+            ? const LoadingView()
             : Container(
                 padding: EdgeInsets.symmetric(
                     horizontal: getProportionateScreenWidth(25),
@@ -34,7 +35,7 @@ class LanguageWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     DefaultText(
-                      text: 'Change language',
+                      text: 'changeLanguage'.tr(),
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
                     ),
@@ -71,7 +72,7 @@ class LanguageWidget extends StatelessWidget {
                       height: getProportionateScreenHeight(20),
                     ),
                     DefaultButton(
-                      text: "apply".toUpperCase(),
+                      text: "apply".toUpperCase().tr(),
                       color: AppColors.primaryColor,
                       press: () async {
                         await model.applyChoosedLang(context);

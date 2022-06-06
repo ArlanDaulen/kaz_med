@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/base/base_provider.dart';
 import 'package:kaz_med/pages/clinics/provider/filters_of_clinics_provider.dart';
@@ -35,7 +36,7 @@ class ClinicsFilters extends StatelessWidget {
                       ),
                     ),
                     title: DefaultText(
-                      text: 'Filters',
+                      text: 'filters'.tr(),
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
@@ -54,7 +55,7 @@ class ClinicsFilters extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DefaultText(
-                        text: 'Distance from you',
+                        text: 'distanceFromYou',
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                       ),
@@ -90,7 +91,7 @@ class ClinicsFilters extends StatelessWidget {
                         ),
                       ),
                       DefaultText(
-                        text: 'Ratings',
+                        text: 'ratings'.tr(),
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                       ),
@@ -109,7 +110,7 @@ class ClinicsFilters extends StatelessWidget {
                         ),
                       ),
                       DefaultText(
-                        text: 'Price',
+                        text: 'price'.tr(),
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                       ),
@@ -139,7 +140,7 @@ class ClinicsFilters extends StatelessWidget {
                         ),
                       ),
                       DefaultText(
-                        text: 'Schedule',
+                        text: 'schedule'.tr(),
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                       ),
@@ -150,7 +151,7 @@ class ClinicsFilters extends StatelessWidget {
                             children: [
                               const Spacer(),
                               DefaultText(
-                                text: 'time',
+                                text: 'time'.tr(),
                                 fontWeight: FontWeight.w600,
                                 fontSize: 15,
                               ),
@@ -221,7 +222,7 @@ class ClinicsFilters extends StatelessWidget {
                 ],
               ),
               child: DefaultText(
-                text: 'Reset',
+                text: 'reset'.tr(),
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.w500,
               ),
@@ -239,7 +240,7 @@ class ClinicsFilters extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: DefaultText(
-                text: 'Apply',
+                text: 'apply'.tr(),
                 color: AppColors.whiteColor,
                 fontWeight: FontWeight.w500,
               ),
