@@ -19,7 +19,11 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
       _EditUser;
 
   @override
+<<<<<<< HEAD
   String get baseURL => 'https://4b02-185-57-73-34.eu.ngrok.io/';
+=======
+  String get baseURL => 'https://8c76-46-34-146-223.ngrok.io/';
+>>>>>>> 6cc50e77a3d54c7f7cbd8080f9bfadcfedeca56a
 
   @override
   Future<Map<String, dynamic>> get header async {

@@ -6,6 +6,8 @@ import 'package:easy_localization/easy_localization.dart';
 // import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kaz_med/pages/index/ui/index.dart';
+import 'package:kaz_med/pages/profile/ui/doctor_analysis.dart';
+import 'package:kaz_med/pages/profile/ui/doctor_appointments.dart';
 
 import '../../base/base_bloc.dart';
 import '../../pages/auth/ui/auth_page.dart';
@@ -54,7 +56,7 @@ class MyAppModel extends BaseBloc {
     // if (isAuthenticated) {
     //   return IndexPage();
     // } else {
-      return const LoginPage();
+    return const DoctorAnalysis();
     // }
   }
 }

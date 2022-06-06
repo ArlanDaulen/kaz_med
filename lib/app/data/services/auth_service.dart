@@ -8,7 +8,11 @@ class AuthService {
   //     route: PlaceholderClient.login(name, password),
   //   );
   // }
+<<<<<<< HEAD
   final String baseUrl = 'https://4b02-185-57-73-34.eu.ngrok.io/';
+=======
+  final String baseUrl = 'https://8c76-46-34-146-223.ngrok.io/';
+>>>>>>> 6cc50e77a3d54c7f7cbd8080f9bfadcfedeca56a
 
   Future<http.Response> login(String name, String password) {
     return http.post(
