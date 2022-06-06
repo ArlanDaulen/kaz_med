@@ -34,8 +34,8 @@ class ProfileProvider extends BaseBloc {
       await _userData.getUserEmail(),
     );
     p.when(success: (response) {
-      profileModel = response;
       log('ROLE: ' + profileModel!.roles!.first.toString());
+      profileModel = response;
       notifyListeners();
     }, failure: (error) {
       log('Error getProfileInfo');

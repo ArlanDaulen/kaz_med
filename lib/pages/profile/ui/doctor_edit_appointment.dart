@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
+import 'package:kaz_med/widgets/default_button.dart';
 import 'package:kaz_med/widgets/default_text.dart';
 
 class DoctorEditAppointment extends StatefulWidget {
@@ -44,6 +45,16 @@ class _DoctorEditAppointmentState extends State<DoctorEditAppointment> {
             centerTitle: true,
             backgroundColor: AppColors.defaultBackgroundColor,
             elevation: 0,
+          ),
+        ),
+        bottomSheet: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: getProportionateScreenWidth(20),
+            vertical: getProportionateScreenHeight(20),
+          ),
+          child: DefaultButton(
+            text: 'Save',
+            press: () => Navigator.pop(context),
           ),
         ),
         body: Padding(
