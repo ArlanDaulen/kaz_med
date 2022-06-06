@@ -20,10 +20,10 @@ class HomeProvider extends BaseBloc {
   init(BuildContext context) async {
     setLoading(true);
     SizeConfig().init(context);
-    await getAllDoctors();
     await checkIsServiceEnabled();
     await checkIsPermissionGranted();
     await getLocation();
+    await getAllDoctors();
     setLoading(false);
     notifyListeners();
   }
@@ -67,7 +67,7 @@ class HomeProvider extends BaseBloc {
       //   ),
       // );
       doctors = DoctorModel.fromJson(
-        {'data': json.decode(response.body)},
+        {'data': json.decode(utf8.decode(response.bodyBytes))},
       );
       notifyListeners();
     } else {

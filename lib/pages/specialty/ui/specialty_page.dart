@@ -93,18 +93,20 @@ class SpecialtyPage extends StatelessWidget {
                     horizontal: getProportionateScreenWidth(30),
                     vertical: getProportionateScreenHeight(20),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      DefaultText(
-                        text: 'List of specialties:',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        isCenter: false,
-                      ),
-                      UIHelper.verticalSpace(15),
-                      _buildPointers(model),
-                    ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        DefaultText(
+                          text: 'List of specialties:',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          isCenter: false,
+                        ),
+                        UIHelper.verticalSpace(15),
+                        _buildPointers(model),
+                      ],
+                    ),
                   ),
                 ),
         );
@@ -133,7 +135,6 @@ class SpecialtyPage extends StatelessWidget {
                 child: InkWell(
               onTap: () {
                 // provider.toAnalysisDetail(context);
-               
               },
               child: DefaultText(
                 text: model.specialityModel!.data![index].specialtyName!,

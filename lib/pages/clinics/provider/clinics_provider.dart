@@ -81,7 +81,9 @@ class ClinicsProvider extends BaseBloc {
     if (response.statusCode == 200) {
       log('Succesfull clinics');
       medCenters = MedicalCenterModel.fromJson(
-        json.decode(response.body) == null ? [] : json.decode(response.body)[0],
+        json.decode(utf8.decode(response.bodyBytes)) == null
+            ? []
+            : json.decode(utf8.decode(response.bodyBytes))[0],
       );
       notifyListeners();
     } else {

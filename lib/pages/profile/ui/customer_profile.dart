@@ -33,7 +33,7 @@ class CustomerProfile extends StatelessWidget {
                 UIHelper.verticalSpace(20),
                 Text(
                   // 'Kenes Aidana',
-                  '${model.profileModel!.customerName!} ${model.profileModel!.customerSurname!}',
+                  '${model.customer!.customerName!} ${model.customer!.customerSurname!}',
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -42,7 +42,7 @@ class CustomerProfile extends StatelessWidget {
                 UIHelper.verticalSpace(getProportionateScreenHeight(12)),
                 Text(
                   // 'Almaty, Kazakhstan',
-                  model.profileModel!.address!,
+                  model.customer!.address!,
                   textAlign: TextAlign.start,
                   style: const TextStyle(
                     fontSize: 14,

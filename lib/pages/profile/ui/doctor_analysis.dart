@@ -41,15 +41,6 @@ class DoctorAnalysis extends StatelessWidget {
               centerTitle: true,
               backgroundColor: AppColors.defaultBackgroundColor,
               elevation: 0,
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    CupertinoIcons.ellipsis_vertical,
-                    color: AppColors.systemBlackColor,
-                  ),
-                ),
-              ],
             ),
           ),
           body: Padding(

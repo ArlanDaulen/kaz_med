@@ -16,7 +16,7 @@ class Profile extends StatelessWidget {
       builder: (context, model, child) {
         return model.isLoading
             ? const LoadingView()
-            : model.profileModel!.roles!.contains('USER')
+            : model.isAsDoctor
                 ? CustomerProfile(model: model)
                 : DoctorProfile(model: model);
       },

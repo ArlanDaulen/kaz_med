@@ -49,8 +49,8 @@ class DoctorsContainer extends StatelessWidget {
                     children: [
                       DefaultText(
                         isCenter: false,
-                        text: model.doctors!.data![index].doctorName! +
-                            ' ${model.doctors!.data![index].doctorSurname!.substring(0, 1)}.',
+                        text:
+                            "${model.doctors!.data![index].doctorName ?? 'Name'}  ${model.doctors!.data![index].doctorSurname ?? 'Surname'}",
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),

@@ -38,6 +38,30 @@ class HomePage extends StatelessWidget {
     AppPngImages.doctor_2,
     AppPngImages.doctor_3,
     AppPngImages.doctor_4,
+    AppPngImages.doctor_1,
+    AppPngImages.doctor_2,
+    AppPngImages.doctor_3,
+    AppPngImages.doctor_4,
+    AppPngImages.doctor_1,
+    AppPngImages.doctor_2,
+    AppPngImages.doctor_3,
+    AppPngImages.doctor_4,
+    AppPngImages.doctor_1,
+    AppPngImages.doctor_2,
+    AppPngImages.doctor_3,
+    AppPngImages.doctor_4,
+    AppPngImages.doctor_1,
+    AppPngImages.doctor_2,
+    AppPngImages.doctor_3,
+    AppPngImages.doctor_4,
+    AppPngImages.doctor_1,
+    AppPngImages.doctor_2,
+    AppPngImages.doctor_3,
+    AppPngImages.doctor_4,
+    AppPngImages.doctor_1,
+    AppPngImages.doctor_2,
+    AppPngImages.doctor_3,
+    AppPngImages.doctor_4,
   ];
 
   @override
@@ -221,7 +245,7 @@ class HomePage extends StatelessWidget {
                         ),
                         Expanded(
                           child: model.isSendRequest
-                              ? LoadingView()
+                              ? const LoadingView()
                               : ListView.separated(
                                   padding: EdgeInsets.only(
                                     top: getProportionateScreenHeight(17),

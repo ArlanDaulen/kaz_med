@@ -6,7 +6,7 @@ import '../../main/user_data.dart';
 
 class DoctorService {
   UserData _userData = UserData();
-  final String baseUrl = 'https://1afe-176-64-7-180.eu.ngrok.io/';
+  final String baseUrl = 'https://qazmed.eu.ngrok.io/';
 
   final headers = {'Content-Type': 'application/json'};
 

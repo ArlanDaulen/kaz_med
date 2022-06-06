@@ -17,7 +17,7 @@ class PlaceholderClient extends BaseClientGenerator with _$PlaceholderClient {
   const factory PlaceholderClient.getUser(String username) = _GetUser;
 
   @override
-  String get baseURL => 'https://8c76-46-34-146-223.ngrok.io/';
+  String get baseURL => 'https://qazmed.eu.ngrok.io/';
 
   @override
   Future<Map<String, dynamic>> get header async {

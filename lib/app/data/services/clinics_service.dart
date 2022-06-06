@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:kaz_med/app/main/user_data.dart';
 
 class ClinicsService {
-  final String baseUrl = 'https://1afe-176-64-7-180.eu.ngrok.io/';
+  final String baseUrl = 'https://qazmed.eu.ngrok.io/';
   UserData _userData = UserData();
 
   final headers = {'Content-Type': 'application/json'};

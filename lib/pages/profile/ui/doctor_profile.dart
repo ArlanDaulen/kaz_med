@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kaz_med/app/data/models/doctor_model.dart';
 import 'package:kaz_med/app/data/models/profile_model.dart';
 import 'package:kaz_med/pages/home/ui/widgets/doctors_container.dart';
 import 'package:kaz_med/pages/profile/provider/profile_provider.dart';
+import 'package:kaz_med/pages/profile/ui/analysis.dart';
+import 'package:kaz_med/pages/profile/ui/doctor_analysis.dart';
 import 'package:kaz_med/pages/profile/ui/doctor_appointments.dart';
 import 'package:kaz_med/shared/size_config.dart';
 import 'package:kaz_med/shared/theme.dart';
@@ -15,7 +18,6 @@ class DoctorProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profile = model.profileModel;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -30,7 +32,7 @@ class DoctorProfile extends StatelessWidget {
               SizedBox(
                 height: getProportionateScreenHeight(50),
               ),
-              DoctorsCard(profile: profile),
+              DoctorsCard(profile: model.doctor),
               SizedBox(
                 height: getProportionateScreenHeight(20),
               ),
@@ -68,36 +70,33 @@ class DoctorProfile extends StatelessWidget {
               SizedBox(
                 height: getProportionateScreenHeight(8),
               ),
-              ...List.generate(
-                3,
-                (index) => Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                        vertical: getProportionateScreenHeight(9),
-                      ),
-                      width: 5,
-                      height: 5,
-                      decoration: BoxDecoration(
-                        color: AppColors.systemBlackColor,
-                        borderRadius: BorderRadius.circular(188),
-                      ),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                      vertical: getProportionateScreenHeight(9),
                     ),
-                    SizedBox(
-                      width: getProportionateScreenWidth(15),
+                    width: 5,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: AppColors.systemBlackColor,
+                      borderRadius: BorderRadius.circular(188),
                     ),
-                    Flexible(
-                      child: DefaultText(
-                        text:
-                            'Bachelor of Medicine, Bachelor of Surgery (MBBS), 1989',
-                        fontWeight: FontWeight.w400,
-                        isCenter: false,
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: getProportionateScreenWidth(15),
+                  ),
+                  Flexible(
+                    child: DefaultText(
+                      text:
+                          'Bachelor of Medicine, Bachelor of Surgery (MBBS), 1989',
+                      fontWeight: FontWeight.w400,
+                      isCenter: false,
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  )
+                ],
               ),
               SizedBox(
                 height: getProportionateScreenHeight(8),
@@ -116,36 +115,33 @@ class DoctorProfile extends StatelessWidget {
               SizedBox(
                 height: getProportionateScreenHeight(8),
               ),
-              ...List.generate(
-                3,
-                (index) => Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                        vertical: getProportionateScreenHeight(9),
-                      ),
-                      width: 5,
-                      height: 5,
-                      decoration: BoxDecoration(
-                        color: AppColors.systemBlackColor,
-                        borderRadius: BorderRadius.circular(188),
-                      ),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(
+                      vertical: getProportionateScreenHeight(9),
                     ),
-                    SizedBox(
-                      width: getProportionateScreenWidth(15),
+                    width: 5,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: AppColors.systemBlackColor,
+                      borderRadius: BorderRadius.circular(188),
                     ),
-                    Flexible(
-                      child: DefaultText(
-                        text:
-                            'Bachelor of Medicine, Bachelor of Surgery (MBBS), 1989',
-                        fontWeight: FontWeight.w400,
-                        isCenter: false,
-                        fontSize: 12,
-                        color: Colors.grey,
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: getProportionateScreenWidth(15),
+                  ),
+                  Flexible(
+                    child: DefaultText(
+                      text:
+                          'Bachelor of Medicine, Bachelor of Surgery (MBBS), 1989',
+                      fontWeight: FontWeight.w400,
+                      isCenter: false,
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  )
+                ],
               ),
               SizedBox(
                 height: getProportionateScreenHeight(8),
@@ -178,7 +174,9 @@ class DoctorProfile extends StatelessWidget {
               const Divider(
                 color: Colors.grey,
               ),
-              const Fees(),
+              Fees(
+                fees: model.doctor!.fees!,
+              ),
               const Divider(
                 color: Colors.grey,
               ),
@@ -215,6 +213,42 @@ class DoctorProfile extends StatelessWidget {
                   ),
                 ),
               ),
+              const Divider(
+                color: Colors.grey,
+              ),
+              InkWell(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => DoctorAnalysis(),
+                  ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: getProportionateScreenHeight(8),
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppSvgImages.clipboard_ic,
+                      ),
+                      SizedBox(
+                        width: getProportionateScreenWidth(15),
+                      ),
+                      DefaultText(
+                        text: 'Analysis',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
+                      const Spacer(),
+                      const Icon(
+                        CupertinoIcons.forward,
+                        color: Colors.grey,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               SizedBox(
                 height: getProportionateScreenHeight(10),
               ),
@@ -232,7 +266,7 @@ class DoctorsCard extends StatelessWidget {
     required this.profile,
   }) : super(key: key);
 
-  final ProfileModel? profile;
+  final Data? profile;
 
   @override
   Widget build(BuildContext context) {
@@ -257,16 +291,18 @@ class DoctorsCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               DefaultText(
-                text:
-                    profile!.customerName! + ' ' + profile!.customerSurname![0],
+                text: profile!.doctorName! + ' ' + profile!.doctorSurname![0],
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
-              DefaultText(
-                text: 'Cardiologist',
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-                color: Colors.grey,
+              ...List.generate(
+                profile!.specialties!.length,
+                (index) => DefaultText(
+                  text: profile!.specialties![index].specialtyName.toString(),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
               ),
               Container(
                 padding: EdgeInsets.symmetric(
@@ -306,7 +342,8 @@ class DoctorsCard extends StatelessWidget {
 }
 
 class Fees extends StatefulWidget {
-  const Fees({Key? key}) : super(key: key);
+  const Fees({Key? key, required this.fees}) : super(key: key);
+  final int fees;
 
   @override
   State<Fees> createState() => _FeesState();
@@ -344,37 +381,35 @@ class _FeesState extends State<Fees> {
               ],
             ),
           ),
-          ...List.generate(
-            isTapped ? 2 : 0,
-            (index) => Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.symmetric(
-                    vertical: getProportionateScreenHeight(9),
-                  ),
-                  width: 5,
-                  height: 5,
-                  decoration: BoxDecoration(
-                    color: AppColors.systemBlackColor,
-                    borderRadius: BorderRadius.circular(188),
-                  ),
-                ),
-                SizedBox(
-                  width: getProportionateScreenWidth(15),
-                ),
-                Flexible(
-                  child: DefaultText(
-                    text:
-                        'reception - consultation of a neurologist - 10 000 tg',
-                    fontWeight: FontWeight.w400,
-                    isCenter: false,
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
+          isTapped
+              ? Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        vertical: getProportionateScreenHeight(9),
+                      ),
+                      width: 5,
+                      height: 5,
+                      decoration: BoxDecoration(
+                        color: AppColors.systemBlackColor,
+                        borderRadius: BorderRadius.circular(188),
+                      ),
+                    ),
+                    SizedBox(
+                      width: getProportionateScreenWidth(15),
+                    ),
+                    Flexible(
+                      child: DefaultText(
+                        text: widget.fees.toString(),
+                        fontWeight: FontWeight.w400,
+                        isCenter: false,
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
+                    )
+                  ],
                 )
-              ],
-            ),
-          ),
+              : const SizedBox(),
         ],
       ),
     );

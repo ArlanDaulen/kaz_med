@@ -56,7 +56,8 @@ class MyAppModel extends BaseBloc {
     // if (isAuthenticated) {
     //   return IndexPage();
     // } else {
-    return const DoctorAnalysis();
+    //   return const DoctorAnalysis();
     // }
+    return LoginPage();
   }
 }

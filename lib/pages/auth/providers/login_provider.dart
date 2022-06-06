@@ -8,6 +8,7 @@ import 'package:kaz_med/core/freezed/network_error.dart';
 import 'package:kaz_med/core/freezed/result.dart';
 import 'package:kaz_med/pages/index/ui/index.dart';
 import 'package:kaz_med/shared/size_config.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../app/main/navigator_state.dart';
 import '../../../shared/utils.dart';
@@ -21,6 +22,7 @@ class LoginProvider extends BaseBloc {
   Result<dynamic, NetworkError>? loginData;
   AuthService _authService = AuthService();
   UserData _userData = UserData();
+  bool isAsDoctor = true;
 
   init(BuildContext context) {
     setLoading(true);
@@ -36,9 +38,9 @@ class LoginProvider extends BaseBloc {
           emailController.text, passwordController.text);
       if (response.statusCode == 200) {
         _userData.setToken(
-          response.headers.values.toList()[3].split(',').first.substring(8),
+          response.headers.values.toList()[4].split(',').first.substring(8),
         );
-        final auth = response.headers.values.toList()[3].split(',');
+        final auth = response.headers.values.toList()[4].split(',');
         _userData.setAllUserDatas(
           auth.first.substring(8),
           auth.last.substring(10),
@@ -88,7 +90,13 @@ class LoginProvider extends BaseBloc {
         ),
       );
     }
+    notifyListeners();
+  }
 
+  setAsDoctor() async {
+    isAsDoctor = !isAsDoctor;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('profile', isAsDoctor);
     notifyListeners();
   }
 }

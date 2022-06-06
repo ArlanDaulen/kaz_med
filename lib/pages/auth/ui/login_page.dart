@@ -157,6 +157,14 @@ class LoginPage extends StatelessWidget {
                               ),
                             ],
                           ),
+                          TextButton(
+                            onPressed: () => model.setAsDoctor(),
+                            child: DefaultText(
+                              text: "Login as a ${model.isAsDoctor ? 'doctor' : 'customer'}",
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.primaryColor,
+                            ),
+                          ),
                           const Spacer(
                             flex: 1,
                           ),

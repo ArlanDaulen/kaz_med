@@ -28,7 +28,7 @@ class SpecialtyProvider extends BaseBloc {
       log('Success to load specialities');
 
       specialityModel = SpecialityModel.fromJson(
-        {'data': json.decode(response.body)},
+        {'data': json.decode(utf8.decode(response.bodyBytes))},
       );
 
       setLoading(false);
